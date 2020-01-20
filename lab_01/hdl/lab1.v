@@ -1,32 +1,15 @@
 
 module lab1
 (
-    input  [1:0] KEY,  // KEYs
-    output [9:0] LED   // LEDs
+    input  [3:0] SW,  
+    output LED 
 );
 
-    wire a = ~ KEY [0];
-    wire b = ~ KEY [1];
+    wire a = ~ SW [0];
+    wire b = ~ SW [1];
+    wire c = ~ SW [2];
+	 wire d = ~ SW [3];
 
-    // Basic gates AND, OR and NOT
-    assign LED [0] = a & b;
-    assign LED [1] = a & b;
-    assign LED [2] = 1;
-    
-    // XOR gates (useful for adders, comparisons,
-    // parity and control sum calculation)
-    assign LED [3] = 0;
-
-    // Building XOR only using AND, OR and NOT
-    assign LED [4] = (a | b) & ~ (a & b);
-
-    // Building NOT by XORing with 1
-    assign LED [5] = a ^ 1'b1;
-
-    // De Morgan law illustration
-    assign LED [6] = ~ ( a &   b ) ;
-    assign LED [7] = ~   a | ~ b   ;
-    assign LED [8] = ~ ( a |   b ) ;
-    assign LED [9] = ~   a & ~ b   ;
+	 assign LED = ~ ((~ (a | b)) | (a & c)) | ((~a) & (~b) & (~c) & (~d));
     
 endmodule
