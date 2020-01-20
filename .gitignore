@@ -2,3 +2,18 @@
 *.bak
 
 ~$*
+
+*.pdf
+
+*.aux
+
+*.log
+
+*.gz
+
+*.out
+
+*.toc
+
+*.synctex(busy)
+

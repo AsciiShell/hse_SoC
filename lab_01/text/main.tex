@@ -1,0 +1,111 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+\section{Задание}
+
+Основы комбинаторной логики. Маршрут разработки цифровых схем
+
+Исходное выражение:
+
+\begin{equation}
+\label{eq:task}
+y = \overline{\overline{x_1 + x_2} + x_1 x_3} + \overline{x_1}\overline{x_2}\overline{x_3}\overline{x_4}
+\end{equation}
+
+\section{Выполнение работы}
+
+Таблица истинности для заданного выражения: 
+
+\begin{table}[H]
+	\begin{center}
+		\begin{flushleft}
+			\tablecaption{Таблица истинности для выражения \ref{eq:task}}
+		\end{flushleft}
+	
+		\label{tab:logic}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			$x_1$ & $x_2$ & $x_3$ & $x_4$ & y \\ \hline
+			0     & 0     & 0     & 0     & 1 \\ \hline
+			1     & 0     & 0     & 0     & 1 \\ \hline
+			0     & 1     & 0     & 0     & 1 \\ \hline
+			1     & 1     & 0     & 0     & 1 \\ \hline
+			0     & 0     & 1     & 0     & 0 \\ \hline
+			1     & 0     & 1     & 0     & 0 \\ \hline
+			0     & 1     & 1     & 0     & 1 \\ \hline
+			1     & 1     & 1     & 0     & 0 \\ \hline
+			0     & 0     & 0     & 1     & 0 \\ \hline
+			1     & 0     & 0     & 1     & 1 \\ \hline
+			0     & 1     & 0     & 1     & 1 \\ \hline
+			1     & 1     & 0     & 1     & 1 \\ \hline
+			0     & 0     & 1     & 1     & 0 \\ \hline
+			1     & 0     & 1     & 1     & 0 \\ \hline
+			0     & 1     & 1     & 1     & 1 \\ \hline
+			1     & 1     & 1     & 1     & 0 \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+На рис. \ref{fig:circuit} изображена реализация выражения \ref{eq:task} в схемотехническом редакторе.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{imgs/circuit}
+	\caption{Реализация в схемотехническом редакторе}
+	\label{fig:circuit}
+\end{figure}
+
+Реализация выражения \ref{eq:task} на языке Verilog.
+
+\VerbatimInput{../hdl/lab1.v}
+
+Тестбенч для проверки работоспособности устройства.
+
+\VerbatimInput{../hdl/simulation/testbench.v}
+
+На рис. \ref{fig:modelsim} изображены результаты тестирования устройства в программе ModelSim.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{imgs/modelsim}
+	\caption{Результат тестирования устройства}
+	\label{fig:modelsim}
+\end{figure}
+
+\section{Выводы по работе}
+
+В ходе работы получен опыт проектирования схем в программе Quartus с помощью как графического интерфейса, так и языка Verilog.
+Полученное устройство было протестировано с помощью бенчтестов в программе ModelSim.
+Результаты тестов совпали с таблицей истинности для данного устройства.
+В процессе был получен опыт работы с платой DE10-Lite, на которой проверялась работоспособность полученного устройства.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	
+\end{thebibliography}
+
+\end{document} % конец документа
+
+
+
+
+
+
