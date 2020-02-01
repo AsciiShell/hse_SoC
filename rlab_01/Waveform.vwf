@@ -1,8 +1,8 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/intelFPGA_lite/17.1/Waveform.vwf" --testbench_file="C:/intelFPGA_lite/17.1/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/intelFPGA_lite/17.1/Waveform.vwf" --testbench_file="C:/intelFPGA_lite/17.1/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/intelFPGA_lite/17.1/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/intelFPGA_lite/17.1/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vlog -work work ROMANOVA_01.vo
@@ -105,6 +105,16 @@ SIGNAL("LED[0]")
 	PARENT = "";
 }
 
+SIGNAL("LED[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
 TRANSITION_LIST("key[0]")
 {
 	NODE
@@ -142,6 +152,15 @@ TRANSITION_LIST("LED[0]")
 	}
 }
 
+TRANSITION_LIST("LED[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
 DISPLAY_LINE
 {
 	CHANNEL = "key[0]";
@@ -166,6 +185,15 @@ DISPLAY_LINE
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
+	TREE_LEVEL = 0;
+}
+
+DISPLAY_LINE
+{
+	CHANNEL = "LED[1]";
+	EXPAND_STATUS = COLLAPSED;
+	RADIX = Binary;
+	TREE_INDEX = 3;
 	TREE_LEVEL = 0;
 }
 
