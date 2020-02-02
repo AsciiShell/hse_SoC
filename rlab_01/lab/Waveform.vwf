@@ -1,8 +1,8 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off ROMANOVA_01 -c ROMANOVA_01 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_01/lab/simulation/qsim/" ROMANOVA_01 -c ROMANOVA_01</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vlog -work work ROMANOVA_01.vo
