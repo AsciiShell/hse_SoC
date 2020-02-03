@@ -1,0 +1,93 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Составить схему указанного выражения в базисе И, ИЛИ, НЕ. 
+Построить временную диаграмму и выполнить моделирование в режимах Functional и Time. 
+Оценить аппаратные ресурсы на реализацию схемы и обосновать полученный результат. 
+Упростить заданное логическое выражение с помощью алгебры логики. 
+Сравнить работу двух схем. 
+Запрограммировать учебную плату и продемонстрировать результаты работы на макете (Часть 2).
+
+$$ y = x_1 (\bar{x}_1 + x_2)$$
+
+\section{Выполнение работы}
+
+Таблица истинности.
+
+\begin{table}[H]
+	\caption{Таблица истинности}
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$x_1$ & $x_2$ & $y$ \\ \hline
+		0    & 0    & 0 \\ \hline
+		0    & 1    & 0 \\ \hline
+		1    & 0    & 0 \\ \hline
+		1    & 1    & 1 \\ \hline
+	\end{tabular}
+\end{table}
+
+Составим упрощенное выражение.
+
+$$ y = x_1 x_2 $$
+
+Создадим блок схему для исходного и упрощенного выражения.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/schema}
+	\caption{Блок схема}
+	\label{fig:schema}
+\end{figure}
+
+Назначим пины в соответствии с документацией.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/pins}
+	\caption{Назначенные пины}
+	\label{fig:pins}
+\end{figure}
+
+Проведем симуляцию для данных выражений.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/waveform}
+	\caption{Временные диаграммы}
+	\label{fig:waveform}
+\end{figure}
+ 
+\section{Вывод}
+В ходе работы были смоделированы исходные и упрощенные логические выражения.
+Проектирование производилось в логическом базисе И, ИЛИ, НЕ.
+В подтверждении эквивалентности были получены одинаковые временные диаграммы для данных функций.
+Так же была произведена оценка ресурсов схемы
+
+\newpage 
+\renewcommand{\refname}{{\normalsize СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа
