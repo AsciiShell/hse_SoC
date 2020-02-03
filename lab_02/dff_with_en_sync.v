@@ -8,30 +8,22 @@ module dff_with_en_sync
    output reg q
 );
 	
-	assign a = en & (rst_n | n_rst);
+	wire a = en & n_rst;
   
-	always @(posedge clk or posedge n_rst)
-begin
-	// The reset signal overrides the hold signal; reset the value to 0
-	if (a)
+	always @(posedge clk or posedge a)
 	begin
-		q <= 1'b0;
+		if (a)
+		begin
+			q <= 1'b0;
+		end
+		else begin
+			if(rst_n & en)begin
+				q <= 1'b0;
+			end
+			else if (en)
+				q <= d;
+		end
 	end
-	// Otherwise, change the variable only when updates are enabled
-	else if (en)
-	begin
-		q <= d;
-	end
-end
 
-//  always @() 
-//  begin
-//
-//		a = 
-//		if (a)
-//			q = 0;
-//		else
-//			if (en)
-//				
-//end
+
 endmodule

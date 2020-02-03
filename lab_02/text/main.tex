@@ -117,7 +117,7 @@
 
 \subsection{Документация HDL}
 
-Документация найдена[\cite{citekey}].
+Документация найдена\cite{citekey}.
 
 \subsection{D-защелка}
 
@@ -199,53 +199,82 @@
 
 \VerbatimInput{../de10_lite_jk_flip_flop.v}
 
-\subsection{JK-триггер с синхронным сигналом}
+\subsection{D-триггер с синхронным сигналом}
 
-На рис.\ref{fig:7_RTL_sample}, \ref{fig:7_RTL_neinv} отображена
+\VerbatimInput{../dff_sync_rst_n.v}
+
+На рис.\ref{fig:7_RTL_sample}, \ref{fig:7_RTL_neinv} отображены RTL диаграммы для разного типа синхронного сигнала. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/7_RTL_sample}
+	\includegraphics[width=0.9\linewidth]{imgs/7_RTL_sample}
 	\caption{Обычный сигнал}
 	\label{fig:7_RTL_sample}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/7_RTL_neinv}
+	\includegraphics[width=0.9\linewidth]{imgs/7_RTL_neinv}
 	\caption{Инвертированный сигнал}
 	\label{fig:7_RTL_neinv}
 \end{figure}
 
-\subsection{D-триггер с очисткой}
+\subsection{D-триггер с асинхронным сбросом}
 
-На рис.\ref{fig:8_RTL_sample}, \ref{fig:8_RTL_neinv} отображена
+\VerbatimInput{../dff_async_rst_n.v}
+
+На рис.\ref{fig:8_RTL_sample}, \ref{fig:8_RTL_neinv} отображены RTL диаграммы для разного типа сигнала сброса. 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/8_RTL_sample}
+	\includegraphics[width=0.9\linewidth]{imgs/8_RTL_sample}
 	\caption{Обычный сигнал}
 	\label{fig:8_RTL_sample}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imgs/8_RTL_neinv}
+	\includegraphics[width=0.9\linewidth]{imgs/8_RTL_neinv}
 	\caption{Инвертированный сигнал}
 	\label{fig:8_RTL_neinv}
 \end{figure}
 
 \subsection{D-триггер со сбросом}
 
-% Сравнение RTL
+\VerbatimInput{../dff_with_en_sync.v}
 
-\subsection{Какая то ересь в №10}
+На рис.\ref{fig:9_RTL_sample} отображена активируемая схема без сигналов сброса.
 
-% Сравнение RTL
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/9_RTL_sample}
+	\caption{RTL sample}
+	\label{fig:9_RTL_sample}
+\end{figure}
 
-\subsection{Какая то ересь в №11}
+На рис.\ref{fig:9_RTL_sync} отображена активируемая схема с сигналами сброса.
 
-% Сравнение RTL
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/9_RTL_sync}
+	\caption{RTL с синхронным и асинхронным сигналами сброса}
+	\label{fig:9_RTL_sync}
+\end{figure}
+
+
+\subsection{D-триггер со сбросом и активацией}
+
+\VerbatimInput{../de10_lite_dff_with_en_sync.v}
+
+На рис.\ref{fig:10_RTL} отображена активируемая схема с сигналами сброса.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/10_RTL}
+	\caption{RTL с синхронным и асинхронным сигналами сброса}
+	\label{fig:10_RTL}
+\end{figure}
+
 
 \section{Контрольные вопросы}
 
