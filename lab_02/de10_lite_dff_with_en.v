@@ -1,4 +1,4 @@
-module de10_lite_dff_async_rst_n
+module de10_lite_dff_with_en
 (
 	input	ADC_CLK_10,
 	input MAX10_cLK1_50,
@@ -10,9 +10,9 @@ module de10_lite_dff_async_rst_n
 );
 	assign LEDR[9:1] =  9'b0;
   
-  dff_async_rst_n dff_async_rst_n(
+  dff_with_en dff_with_en(
   .clk ( ~ KEY [1]),
-  .rst_n ( SW [0]),
+  .en ( SW [0]),
   .d ( ~ KEY [0]),
   .q (LEDR[0])
   );
