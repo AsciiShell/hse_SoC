@@ -12,7 +12,7 @@ module de10_lite_dff_sync_rst_n
   
   dff_sync_rst_n dff_sync_rst_n(
   .clk ( ~ KEY [1]),
-  .rst_n ( SW [1]),
+  .rst_n ( SW [0]),
   .d ( ~ KEY [0]),
   .q (LEDR[0])
   );
