@@ -7,7 +7,7 @@ module jk_latch
    output q_n
 );
   assign q_n = ~q;
-  always @(ck) begin
+  always @(posedge ck) begin
     case({j,k})
       2'b0_1 : q <= 1'b0;
       2'b1_0 : q <= 1'b1;
