@@ -83,9 +83,9 @@
 
 \subsection{T-триггер}
 
-%\VerbatimInput{../t_latch.v}
+\VerbatimInput{../t_latch.v}
 
-\begin{table}[]
+\begin{table}[H]
 	\begin{center}
 		\begin{flushleft}
 			\tablecaption{Таблица переходов для T-триггера}
@@ -100,25 +100,140 @@
 	\end{center}
 \end{table}
 
-\subsection{Измененный D-триггер}
+Результаты работы Т-триггера на рис.\ref{fig:t_wave2}, \ref{fig:t_wave_sync}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/t_wave_sync}
+	\caption{Т-триггер в обычном режиме}
+	\label{fig:t_wave_sync}
+\end{figure}
 
-%\VerbatimInput{../d_latch.v}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/t_wave2}
+	\caption{T-триггер в режиме понижения частоты}
+	\label{fig:t_wave2}
+\end{figure}
 
-% Сравнение RTL
+\subsection{Документация HDL}
 
-\subsection{Задний D-триггер}
+Документация найдена[\cite{citekey}].
 
-%\VerbatimInput{../d_latch.v}
+\subsection{D-защелка}
 
-% Сравнение RTL
+\VerbatimInput{../d_latch.v}
 
-\subsection{Тестирование D-триггер}
+На рис.\ref{fig:4_RTL_norm}, \ref{fig:4_RTL_inv} можно сравнить RTL диаграммы для данных схем.
 
-\subsection{Тестирование JK-триггер}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/4_RTL_norm}
+	\caption{D-защелка с низким уровнем сигнала}
+	\label{fig:4_RTL_norm}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/4_RTL_inv}
+	\caption{D-защелка с высоким уровнем сигнала}
+	\label{fig:4_RTL_inv}
+\end{figure}
+
+\subsection{D-триггер}
+
+\VerbatimInput{../d_flip_flop.v}
+
+На рис.\ref{fig:5_RTL_posedge_sample}, \ref{fig:5_RTL_negedge} можно сравнить RTL диаграммы для данных схем.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/5_RTL_posedge_sample}
+	\caption{D-триггер с передним фронтом}
+	\label{fig:5_RTL_posedge_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/5_RTL_negedge}
+	\caption{D-триггер с задним фронтом}
+	\label{fig:5_RTL_negedge}
+\end{figure}
+
+
+\subsection{JK-триггер}
+
+\begin{table}[H]
+	\begin{center}
+	\begin{flushleft}
+		\tablecaption{Таблица переходов для JK-триггера}
+	\end{flushleft}
+		\label{tab:jk_flip_flop}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			J & K & Q                     \\ \hline
+			0 & 0 & $Q_{prev}$            \\ \hline
+			1 & 0 & 1                     \\ \hline
+			0 & 1 & 0                     \\ \hline
+			1 & 1 & $\overline{Q_{prev}}$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\VerbatimInput{../jk_flip_flop.v}
+
+На рис.\ref{fig:6_RTL_jk}, \ref{fig:6_wave_jk} отображена RTL диаграмма и результат тестирования триггера.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/6_RTL_jk}
+	\caption{JK-триггер}
+	\label{fig:6_RTL_jk}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/6_wave_jk}
+	\caption{Тестирование триггера}
+	\label{fig:6_wave_jk}
+\end{figure}
+
+\VerbatimInput{../de10_lite_jk_flip_flop.v}
+
+\subsection{JK-триггер с синхронным сигналом}
+
+На рис.\ref{fig:7_RTL_sample}, \ref{fig:7_RTL_neinv} отображена
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/7_RTL_sample}
+	\caption{Обычный сигнал}
+	\label{fig:7_RTL_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/7_RTL_neinv}
+	\caption{Инвертированный сигнал}
+	\label{fig:7_RTL_neinv}
+\end{figure}
 
 \subsection{D-триггер с очисткой}
 
-% Сравнение RTL
+На рис.\ref{fig:8_RTL_sample}, \ref{fig:8_RTL_neinv} отображена
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/8_RTL_sample}
+	\caption{Обычный сигнал}
+	\label{fig:8_RTL_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/8_RTL_neinv}
+	\caption{Инвертированный сигнал}
+	\label{fig:8_RTL_neinv}
+\end{figure}
 
 \subsection{D-триггер со сбросом}
 
