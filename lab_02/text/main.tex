@@ -1,0 +1,362 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+\section{Задание}
+
+\begin{enumerate}
+	\item Используя опыт, полученный при создании двухступенчатого RS-триггера, самостоятельно
+	разработайте на языке Verilog модуль, описывающий структуру JК-триггера, приведенную на
+	Рисунке 2.17.
+	
+	
+	\item Используя созданные ранее D-триrгер и JК-триггер, опишите Verilog модули Т-триггера в
+	соответствии с Рисунком 2.18 и самостоятельно постройте таблицу переходов данного
+	триггера.
+	
+	\item Найти в сети Интернет документ с рекомендациями по программированию на языке HDL для
+	ПЛИС производства компании Intel FPGA.
+	
+	\item Отредактируйте код D-защелки (Листинг 2.16) так, чтобы входное значение сохранялось при
+	низком уровне тактового сигнала.
+	Скомпилируйте код и сравните его RТL-представление с Рисунком 2.23.
+	
+	\item Измените D-триггер, код которого приведен в Листинге 2.17 так, чтобы он работал под
+	управлением заднего фронта тактового сигнала. 
+	Для этого необходимо заменить ключевое слово posedge на negedge. 
+	Скомпилируйте проект и сравните его RТL-представление с	предыдущей реализацией на Рисунке 2.25.
+	
+	\item Используя опыт, полученный при реализации D-триггера, самостоятельно отредактируйте
+	код Листинга 2.19. 
+	Проведите его моделирование, имитируя все возможные комбинации входных сигналов, приведенные в таблице переходов на Рисунке 2.16.
+	Сравните получаемые	результаты с этой таблицей.
+	
+	\item Аналогичным образом отредактируйте код Листинга 2.18, добавив еще одну кнопку.
+	Проверьте работоспособность JК-триггера, наблюдая за состоянием светодиода,	подключенного к выходу. 
+	Сравните затраты ресурсов, необходимых для создания D-триггера и JК-триггера в RТL Viewer.
+	
+	\item Неинвертированный синхронный сигнал сброса часто называют сигналом очистки.
+	Измените пример в Листинге 2.20 для реализации D-триггера с сигналом очистки.
+	Сравните его RТL-представление с Рисунком 2.29.
+	
+	\item Добавьте в D-триггер асинхронный сброс с сигналом очистки, реализованным на предыдущем шаге.
+	Модуль должен иметь положительный синхронный сигнал очистки и в то же время асинхронный вход n\_rst.
+	Сравните е го аппаратную реализацию (RТL-представление) с Рисунком 2.31.
+	
+	\item Измените активируемый триггер в Листинге 2.24.
+	Необходимо добавить синхронный положительный сигнал очистки и асинхронный сигнал n\_rst.
+	Сравните аппаратную реализацию (RTL View) с Рисунком 2.35.
+	
+	\item Измените реализацию триггера, приведенную в Листинге 2.28. 
+	Добавьте положительный сигнал синхронной очистки, асинхронный сброс n\_rst и сигнал разрешения работы en.
+	Сравните аппаратную реализацию (RTL View) с Рисунком 2.37.
+\end{enumerate}
+
+\section{Выполнение работы}
+
+\subsection{JK-триггер}
+
+\VerbatimInput{../jk_latch.v}
+
+Временная диаграмма для JK-триггера изображена на рис.\ref{fig:jk_wave}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.95\linewidth]{imgs/jk_wave}
+	\caption{Временная диаграмма для JK-триггера}
+	\label{fig:jk_wave}
+\end{figure}
+
+
+\subsection{T-триггер}
+
+\VerbatimInput{../t_latch.v}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{flushleft}
+			\tablecaption{Таблица переходов для T-триггера}
+		\end{flushleft}
+		\label{tab:t_flip_flop}
+		\begin{tabular}{|c|c|}
+			\hline
+			$T$ & $Q$                   \\ \hline
+			0   & $Q_{prev}$            \\ \hline
+			1   & $\overline{Q_{prev}}$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+Результаты работы Т-триггера на рис.\ref{fig:t_wave2}, \ref{fig:t_wave_sync}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/t_wave_sync}
+	\caption{Т-триггер в обычном режиме}
+	\label{fig:t_wave_sync}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/t_wave2}
+	\caption{T-триггер в режиме понижения частоты}
+	\label{fig:t_wave2}
+\end{figure}
+
+\subsection{Документация HDL}
+
+Документация найдена\cite{citekey}.
+
+\subsection{D-защелка}
+
+\VerbatimInput{../d_latch.v}
+
+На рис.\ref{fig:4_RTL_norm}, \ref{fig:4_RTL_inv} можно сравнить RTL диаграммы для данных схем.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/4_RTL_norm}
+	\caption{D-защелка с низким уровнем сигнала}
+	\label{fig:4_RTL_norm}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/4_RTL_inv}
+	\caption{D-защелка с высоким уровнем сигнала}
+	\label{fig:4_RTL_inv}
+\end{figure}
+
+\subsection{D-триггер}
+
+\VerbatimInput{../d_flip_flop.v}
+
+На рис.\ref{fig:5_RTL_posedge_sample}, \ref{fig:5_RTL_negedge} можно сравнить RTL диаграммы для данных схем.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/5_RTL_posedge_sample}
+	\caption{D-триггер с передним фронтом}
+	\label{fig:5_RTL_posedge_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{imgs/5_RTL_negedge}
+	\caption{D-триггер с задним фронтом}
+	\label{fig:5_RTL_negedge}
+\end{figure}
+
+
+\subsection{JK-триггер}
+
+\begin{table}[H]
+	\begin{center}
+	\begin{flushleft}
+		\tablecaption{Таблица переходов для JK-триггера}
+	\end{flushleft}
+		\label{tab:jk_flip_flop}
+		\begin{tabular}{|c|c|c|}
+			\hline
+			J & K & Q                     \\ \hline
+			0 & 0 & $Q_{prev}$            \\ \hline
+			1 & 0 & 1                     \\ \hline
+			0 & 1 & 0                     \\ \hline
+			1 & 1 & $\overline{Q_{prev}}$ \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\VerbatimInput{../jk_flip_flop.v}
+
+На рис.\ref{fig:6_RTL_jk}, \ref{fig:6_wave_jk} отображена RTL диаграмма и результат тестирования триггера.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/6_RTL_jk}
+	\caption{JK-триггер}
+	\label{fig:6_RTL_jk}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/6_wave_jk}
+	\caption{Тестирование триггера}
+	\label{fig:6_wave_jk}
+\end{figure}
+
+\VerbatimInput{../de10_lite_jk_flip_flop.v}
+
+\subsection{D-триггер с синхронным сигналом}
+
+\VerbatimInput{../dff_sync_rst_n.v}
+
+На рис.\ref{fig:7_RTL_sample}, \ref{fig:7_RTL_neinv} отображены RTL диаграммы для разного типа синхронного сигнала. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/7_RTL_sample}
+	\caption{Обычный сигнал}
+	\label{fig:7_RTL_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/7_RTL_neinv}
+	\caption{Инвертированный сигнал}
+	\label{fig:7_RTL_neinv}
+\end{figure}
+
+\subsection{D-триггер с асинхронным сбросом}
+
+\VerbatimInput{../dff_async_rst_n.v}
+
+На рис.\ref{fig:8_RTL_sample}, \ref{fig:8_RTL_neinv} отображены RTL диаграммы для разного типа сигнала сброса. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/8_RTL_sample}
+	\caption{Обычный сигнал}
+	\label{fig:8_RTL_sample}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/8_RTL_neinv}
+	\caption{Инвертированный сигнал}
+	\label{fig:8_RTL_neinv}
+\end{figure}
+
+\subsection{D-триггер со сбросом}
+
+\VerbatimInput{../dff_with_en_sync.v}
+
+На рис.\ref{fig:9_RTL_sample} отображена активируемая схема без сигналов сброса.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/9_RTL_sample}
+	\caption{RTL sample}
+	\label{fig:9_RTL_sample}
+\end{figure}
+
+На рис.\ref{fig:9_RTL_sync} отображена активируемая схема с сигналами сброса.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/9_RTL_sync}
+	\caption{RTL с синхронным и асинхронным сигналами сброса}
+	\label{fig:9_RTL_sync}
+\end{figure}
+
+
+\subsection{D-триггер со сбросом и активацией}
+
+\VerbatimInput{../de10_lite_dff_with_en_sync.v}
+
+На рис.\ref{fig:10_RTL} отображена активируемая схема с сигналами сброса.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/10_RTL}
+	\caption{RTL с синхронным и асинхронным сигналами сброса}
+	\label{fig:10_RTL}
+\end{figure}
+
+
+\section{Контрольные вопросы}
+
+\begin{enumerate}
+	\item b) D-тpиrrep;
+	\item AZ, BY, CX;
+	\item Задержка распространения: $t_{pd}$ = максимальная задержка от входа к выходу;
+	\item Синхронные триггеры позволяют изменять значение своего состояния только при подаче специального сигнала.
+	Асинхронные могут изменять свое состояние в любой момент времени;
+	\item Запрещенная комбинация -- комбинация входных сигналов, подача которых на вход триггера приведет его в неопределенное состояние;
+	При подаче запрещенной комбинации на обоих выходах триггера будет низкий логический сигнал, при чем триггер установится в определенное состояние при подаче другого сигнала;
+	\item D-триггер синхронный, в отличии от D-защелки, т.е. обновляет свое значение только при подаче сигнала;
+	\item В схеме slave-master используется две D-защелки, когда схема на бистабильных ячейках более сложная и состоит из нескольких логических элементов с обратными связями;
+	\item Время установки -- это время перед приходом перепада сигнала CLK, в течение которого сигнал D должен быть стабилен;
+	\item Время удержания -- это время, в течение которого сигнал D должен быть стабилен, после прихода перепада сигнала CLK;
+	\item На JК-триггер можно реализовать D-триггер и T-триггер;
+	\item Разработайте схему Т-триггера на основе D-триггера (рис. \ref{fig:self_made_t_on_d});
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{imgs/self_made_t_on_d}
+		\caption{Т-триггера на основе D-триггера}
+		\label{fig:self_made_t_on_d}
+	\end{figure}
+	\item Операторы непрерывного присваивания на языке Verilog соединяет сигналы внутри схемы;
+	\item Блокирующие присваивания выполняются последовательно, один за другим.
+	Неблокирующие присваивания выполняются одновременно;
+	\item Синхронный сброс может произойти только по фронту синхронизирующего сигнала, в то время как асинхронный сброс может произойти в любой момент времени;
+
+	Пример синхронизирующего сброса:
+	\begin{verbatim}
+	module dff_sync_rst_n
+	(	
+		input clk,
+		input rst_n,
+		input d,
+		output reg q
+	) ;
+	always @ (posedge clk)
+		if (!rst_n)
+			q <= О;
+		else
+			q <= d;
+	endmodule
+	\end{verbatim}
+	
+	\item Ключеве слова parameter в языке Verilog позволяет переиспользовать исходный код при разработке модулей разной разрядности. 
+	С помощью данного параметра можно настраивать размерность модулей;
+	\item $ P = \alpha C U^2 f$;
+	
+	$\alpha$ -- среднее число переключений в течении тактового периода;
+	
+	$C$ -- емкость нагрузки;
+	
+	$U$ -- напряжение питания;
+	
+	$f$ -- частота тактового сигнала;
+	
+	\item Ячейка блокировки -- ячейка, которая блокирует изменения состояния неиспользуемых элементов. 
+	Данная ячейка применяется для снижения энергопотребления логического элемента;
+	\item Блокировка тактового сигнала может привести к появлению шумов в линии тактового сигнала и ложного срабатывания управляемого элемента.
+\end{enumerate}
+
+\section{Выводы по работе}
+
+В ходе работы получен опыт проектирования схем в программе Quartus с помощью языка Verilog.
+Полученное устройство было протестировано с помощью бенчтестов в программе Quartus Simulation Waveform editor.
+В процессе работы были смоделированы различные триггеры с синхронной и асинхронным управлением, сигналами сброса.
+В процессе был получен опыт работы с платой DE10-Lite, на которой проверялась работоспособность полученного устройства.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{citekey} Khor W. Y. et al. Evaluation of FPGA Based QSPI Flash Access Using Partial Reconfiguration //2019 7th International Conference on Smart Computing \& Communications (ICSCC). – IEEE, 2019. – С. 1-5
+\end{thebibliography}
+
+\end{document} % конец документа
+
+
+
+
+
+
