@@ -72,6 +72,42 @@
 
 \subsection{Анализ параметров оптимизации}
 
+Было проведено тестирование параметрического шифратора и дешифратора с различными способами оптимизации схемы.
+
+\begin{table}[H]
+	\begin{center}
+		\begin{flushleft}
+			\tablecaption{Результаты различных вариантов оптимизации параметрического шифратора}
+		\end{flushleft}
+		\label{tab:encdoder}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& slack & data delay & total delay IC & total delay cell \\ \hline
+			balanced & 1.173 & 2.007      & 1.016          & 0.784            \\ \hline
+			power    & 0.051 & 2.921      & 1.209          & 1.505            \\ \hline
+			resource & 0.051 & 2.921      & 1.209          & 1.505            \\ \hline
+			timing   & 1.025 & 1.948      & 0.921          & 0.82             \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{flushleft}
+			\tablecaption{Результаты различных вариантов оптимизации параметрического дешифратора}
+		\end{flushleft}
+		\label{tab:decoder}
+		\begin{tabular}{|c|c|c|c|c|}
+			\hline
+			& slack & data delay & total delay IC & total delay cell \\ \hline
+			balanced & 1.504 & 1.468      & 0.609          & 0.652            \\ \hline
+			power    & 0.664 & 2.307      & 1.164          & 0.936            \\ \hline
+			resource & 0.664 & 2.307      & 1.164          & 0.936            \\ \hline
+			timing   & 1.648 & 1.324      & 0.583          & 0.534            \\ \hline
+		\end{tabular}
+	\end{center}
+\end{table}
+
 \subsection{Конвертор унарного кода в код Грея}
 
 \VerbatimInput{../gray_case.v}
