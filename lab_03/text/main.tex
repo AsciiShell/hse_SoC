@@ -38,8 +38,33 @@
 
 \subsection{Неприоритетный шифратор}
  
- 
+Была разработана схема неприоритетного шифратора в базисе И-НЕ, ИЛИ-НЕ (рис.\ref{fig:z1_schema}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{imgs/z1_schema}
+	\caption{Схема неприоритетного шифратора}
+	\label{fig:z1_schema}
+\end{figure}
+
 \subsection{Шифраторы}
+
+Шифратор на основе оператора непрерывного присваивания.
+\VerbatimInput{../b1_enc_assign.v}
+
+Шифратор на основе оператора if.
+\VerbatimInput{../b2_enc_if.v}
+
+Шифратор на основе оператора case.
+\VerbatimInput{../b3_enc_case.v}
+
+Приоритетный шифратор на основе оператора if.
+\VerbatimInput{../b4_pri_enc_if.v}
+
+Приоритетный шифратор на основе оператора непрерывного присваивания.
+\VerbatimInput{../b5_pri_enc_assign.v}
+
+Приоритетный шифратор на основе оператора сдвиговых регистров.
+\VerbatimInput{../b12_anybit_enc.v}
 
 \subsection{Дешифраторы}
 
