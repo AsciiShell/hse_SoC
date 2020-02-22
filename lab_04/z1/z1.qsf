@@ -49,9 +49,6 @@ set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name VERILOG_FILE b1_mux_2_1_concate.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name VERILOG_FILE run.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VERILOG_FILE b2_mux_2_1_comb_incorrect.v
 set_global_assignment -name VERILOG_FILE b2_mux_2_1_comb_correct1.v
 set_global_assignment -name VERILOG_FILE b2_mux_2_1_comb_correct2.v
@@ -71,4 +68,11 @@ set_global_assignment -name VERILOG_FILE b2_mux_3_1_if_correct.v
 set_global_assignment -name VERILOG_FILE b2_mux_3_1_ifx_correct.v
 set_global_assignment -name VERILOG_FILE b1_func_8_1_case.v
 set_global_assignment -name BDF_FILE iskl_ili.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
+set_global_assignment -name VERILOG_FILE bn_demux_1_4_case.v
+set_global_assignment -name VERILOG_FILE bn_select_8_1_case.v
+set_global_assignment -name VERILOG_FILE bn_select_8_1_comb.v
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
