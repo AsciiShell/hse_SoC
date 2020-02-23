@@ -12,5 +12,4 @@ module b2_mux_2_1_case
             1: y = d1;
         endcase
     end
-
 endmodule

@@ -12,5 +12,4 @@ module b2_mux_2_1_if
         else 
             y = d0;
     end
-
 endmodule

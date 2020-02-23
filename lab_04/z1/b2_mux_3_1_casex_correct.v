@@ -4,7 +4,6 @@ module b2_mux_3_1_casex_correct
     input      [1:0] sel,
     output reg [1:0] y
 );
-
     always @(*)
         case (sel)
         2'b00: y = d0;

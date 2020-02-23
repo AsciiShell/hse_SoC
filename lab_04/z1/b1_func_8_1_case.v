@@ -3,7 +3,6 @@ module b1_func_8_1_case
     input  [2:0] sel,
     output reg y
 );
-
     always @(*)
         case (sel)
         3'b000: y = 1'b0;
@@ -15,5 +14,4 @@ module b1_func_8_1_case
         3'b110: y = 1'b0;
         3'b111: y = 1'b0;
         endcase
-
 endmodule

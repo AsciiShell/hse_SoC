@@ -7,5 +7,4 @@ module b2_mux_2_1_comb_incorrect
 );
 
     assign y = (sel & d1) | ((~sel) & d0);
-
 endmodule

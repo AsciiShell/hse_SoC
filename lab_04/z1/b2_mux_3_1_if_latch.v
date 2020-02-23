@@ -4,7 +4,6 @@ module b2_mux_3_1_if_latch
    input      [1:0] sel,
    output reg [1:0] y
 );
-
    always @(*)
 	begin
 		if(sel == 2'b00)

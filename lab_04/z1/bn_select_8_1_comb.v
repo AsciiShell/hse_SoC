@@ -12,16 +12,14 @@ module bn_select_8_1_comb
     input       [7:0] sel,
     output   [DATA_WIDTH-1:0] y
 );
-    
-	 reg [DATA_WIDTH-1:0] w0;
-	 reg [DATA_WIDTH-1:0] w1;
-	 reg [DATA_WIDTH-1:0] w2;
-	 reg [DATA_WIDTH-1:0] w3;
-	 reg [DATA_WIDTH-1:0] w4;
-	 reg [DATA_WIDTH-1:0] w5;
-	 reg [DATA_WIDTH-1:0] w6;
-	 reg [DATA_WIDTH-1:0] w7;
-	 
+	 wire [DATA_WIDTH-1:0] w0;
+	 wire [DATA_WIDTH-1:0] w1;
+	 wire [DATA_WIDTH-1:0] w2;
+	 wire [DATA_WIDTH-1:0] w3;
+	 wire [DATA_WIDTH-1:0] w4;
+	 wire [DATA_WIDTH-1:0] w5;
+	 wire [DATA_WIDTH-1:0] w6;
+	 wire [DATA_WIDTH-1:0] w7;
 	 bn_mn #(DATA_WIDTH) bn_mn0(.w(d0), .sel(sel[0]), .y1(w0));
 	 bn_mn #(DATA_WIDTH) bn_mn1(.w(d1), .sel(sel[1]), .y1(w1));
 	 bn_mn #(DATA_WIDTH) bn_mn2(.w(d2), .sel(sel[2]), .y1(w2));
@@ -33,7 +31,6 @@ module bn_select_8_1_comb
 	 assign y = w0 | w1 | w2| w3 | w4 | w5 | w6 | w7;
 endmodule
 
-
 module bn_mn
 #(parameter DATA_WIDTH=8)
 (
@@ -42,6 +39,6 @@ module bn_mn
     output   [DATA_WIDTH-1:0] y1
 );
     wire [DATA_WIDTH - 1:0] select;
-    assign select = {DATA_WIDTH - 1{sel}};
+    assign select = {DATA_WIDTH {sel}};
     assign y1 = (select & w);
 endmodule

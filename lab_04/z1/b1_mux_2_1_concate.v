@@ -6,8 +6,6 @@ module b1_mux_2_1_concate
     output y
 );
 	 wire [1:0] dataIn;
-
     assign dataIn = {d1,d0};
 	 assign y = dataIn[sel];
-
 endmodule

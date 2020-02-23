@@ -11,8 +11,7 @@ module bn_select_8_1_case
     input       [DATA_WIDTH-1:0] d7,
     input       [7:0] sel,
     output  reg [DATA_WIDTH-1:0] y
-);
-    
+); 
     always @(*)
         case (sel)
             8'b00000001: y=d0;
@@ -25,5 +24,4 @@ module bn_select_8_1_case
             8'b10000000: y=d7;
             default:     y={DATA_WIDTH{1'bx}};
         endcase
-    
 endmodule
