@@ -23,4 +23,6 @@
 
 **/output_files/
 
-**/simulation/
+**/simulation/qsim/
+
+**/simulation/sim/
