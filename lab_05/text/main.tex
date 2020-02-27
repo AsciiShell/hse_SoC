@@ -49,14 +49,113 @@
 	
 	\section{Дополнительные задания}
 	
+	\subsection{Задание 1}
 	
+	\begin{table}[H]
+		\begin{center}
+			\begin{flushleft}
+				\tablecaption{Оценка частоты для сумматоров разной размерности}
+			\end{flushleft}
+			\label{tab:task_1}
+			\begin{tabular}{|c|c|}
+				\hline
+				Разрядность (бит)   & Максимальная тактовая частота (МГц)      \\ \hline
+				4   & 425.89 \\ \hline
+				8   & 418.94 \\ \hline
+				16  & 292.65 \\ \hline
+				32  & 239.52 \\ \hline
+				64  & 165.7  \\ \hline
+				128 & 99.04  \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{table}
 	
+	\subsection{Задание 2}
+	
+	\VerbatimInput{../z1/alu.v}
+	
+	\subsection{Задание 3}
+	
+	Максимальная тактовая частота не зависела от конкретных значений BLOCK\_WIDTH и BLOCK\_COUNT,
+	а зависела только от их произведения -- параметра WIDTH.
+	
+	Возможно, это связано с тем, что критический путь сигнала проходит через одинаковое число переносов разряда.
+	
+	\begin{table}[H]
+		\begin{center}
+			\begin{flushleft}
+				\tablecaption{Оценка частоты для блочных сумматоров разной размерности}
+			\end{flushleft}
+			\label{tab:task_3}
+			\begin{tabular}{|c|c|}
+				\hline
+				Разрядность (бит)   & Максимальная тактовая частота (МГц)      \\ \hline
+				4   & 426.44 \\ \hline
+				8   & 376.08 \\ \hline
+				16  & 226.09 \\ \hline
+				32  & 233.26 \\ \hline
+				64  & 171.5  \\ \hline
+				128 & 101.7  \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{table}
+
+	\subsection{Задание 4}
+
+	\begin{table}[H]
+		\begin{center}
+			\begin{flushleft}
+				\tablecaption{Оценка частоты для блочных сумматоров с предварительным переносом}
+			\end{flushleft}
+			\label{tab:task_4}
+			\begin{tabular}{|c|c|}
+				\hline
+				Разрядность (бит)   & Максимальная тактовая частота (МГц)      \\ \hline
+				4   & 294.03 \\ \hline
+				8   & 169.61 \\ \hline
+				16  & 118.01 \\ \hline
+				32  & 107.84 \\ \hline
+				64  & 80.02  \\ \hline
+				128 & 72.96  \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{table}
+	
+	\subsection{Задание 5}
+	
+	\begin{table}[H]
+		\begin{center}
+			\begin{flushleft}
+				\tablecaption{Оценка частоты префиксного сумматора}
+			\end{flushleft}
+			\label{tab:task_5}
+			\begin{tabular}{|c|c|}
+				\hline
+				Разрядность (бит)   & Максимальная тактовая частота (МГц)      \\ \hline
+				4   & 319.69 \\ \hline
+				8   & 246.97 \\ \hline
+				16  & 243.9  \\ \hline
+				32  & 161.79 \\ \hline
+				64  & 145.99 \\ \hline
+				128 & 102.87 \\ \hline
+			\end{tabular}
+		\end{center}
+	\end{table}
+
 	\section{Задания для самостоятельной работы}
 	
-	Используя примеры кода из данного пособия , реализуйте следующие комбинационные
+	Используя примеры кода из данного пособия, реализуйте следующие комбинационные
 	блоки:
 	Блочный сумматор с выбором переноса, имеющий настраиваемое число блоков
 	BLOCK\_COUNТ и размер блока BLOCK\_SIZE.
+	
+	
+	Блочный сумматор с выбором переноса реализуется следующим образом:
+	независимо вычисляются результаты операции, если бы на вход подали сигнал переноса и не подали бы.
+	Далее из двух результатов выбирается один с помощью мультиплексора, в зависимости от наличия сигнала переноса.
+	
+	\VerbatimInput{../extra/lab5.v}
+	
 	
 	\section{Контрольные вопросы}
 	

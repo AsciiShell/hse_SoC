@@ -21,25 +21,24 @@ module alu
     input      [SHIFT - 1:0] shamt,
     input      [ 2:0]        operation,
     output                   zero,
-	 output reg               overflow,
+    output reg               overflow,
     output reg [WIDTH - 1:0] result
 );
 
     always @ (*) begin
         case (operation)
-            `ALU_AND : result = x & y; 
-				`ALU_OR  : result = x | y;
+            `ALU_AND : result = x & y;
+            `ALU_OR  : result = x | y;
             `ALU_ADD : {overflow, result} = x + y;
-				`ALU_SUB : {overflow, result} = x - y;
+            `ALU_SUB : {overflow, result} = x - y;
             `ALU_SLL : result = y << shamt;
-				`ALU_SRL : result = y >> shamt;
+            `ALU_SRL : result = y >> shamt;
             `ALU_LE  : result = (x < y) ? 1 : 0;
-				`ALU_GT  : result = (x > y) ? 1 : 0;
-				default: result = {WIDTH{1'bx}};
+            `ALU_GT  : result = (x > y) ? 1 : 0;
+            default: result = {WIDTH{1'bx}};
         endcase
     end
 
-    //Flags
-    assign zero      = (result == 0);
+    assign zero = (result == 0);
 
 endmodule
