@@ -14,12 +14,14 @@ vcd add -internal clk_divider_vlg_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
-        after 2500 simTimestamp
+        after 25000 simTimestamp
     }
 }
-after 2500 simTimestamp
+after 25000 simTimestamp
 run -all
 quit -f
+
+
 
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
@@ -39,6 +41,8 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
+
+
 
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
@@ -70,7 +74,7 @@ HEADER
 	VERSION = 1;
 	TIME_UNIT = ns;
 	DATA_OFFSET = 0.0;
-	DATA_DURATION = 1000.0;
+	DATA_DURATION = 10000.0;
 	SIMULATION_TIME = 0.0;
 	GRID_PHASE = 0.0;
 	GRID_PERIOD = 10.0;
@@ -114,7 +118,7 @@ TRANSITION_LIST("clk_in")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 50;
+			REPEAT = 500;
 			LEVEL 0 FOR 10.0;
 			LEVEL 1 FOR 10.0;
 		}
@@ -126,7 +130,7 @@ TRANSITION_LIST("clk_out")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL X FOR 10000.0;
 	}
 }
 
@@ -135,7 +139,7 @@ TRANSITION_LIST("rst_n")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
+		LEVEL 1 FOR 10000.0;
 	}
 }
 

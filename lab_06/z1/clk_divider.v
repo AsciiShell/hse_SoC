@@ -2,7 +2,7 @@
 
 module clk_divider
 #(
-  parameter WIDTH = 24    
+  parameter WIDTH = 8   
 )
 (
  input  clk_in,
@@ -20,7 +20,7 @@ module clk_divider
       cnt_div <= cnt_div + 1'b1;
   end
    
-    assign clk_out = cnt_div[WIDTH-1];
+    assign clk_out = cnt_div > 8'b11001000;
    
 endmodule
   
