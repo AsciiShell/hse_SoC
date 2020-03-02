@@ -1,16 +1,16 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off z1 -c z1 --vector_source="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/Waveform2.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/simulation/qsim/Waveform2.vwf.vt"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off z1 -c z1 --vector_source="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/Waveform2.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/simulation/qsim/Waveform2.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/simulation/qsim/" z1 -c z1</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/lab_06/z1/simulation/qsim/" z1 -c z1</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off z1 -c z1 --vector_source="D:/repos/hse_SoC/lab_06/z1/Waveform2.vwf" --testbench_file="D:/repos/hse_SoC/lab_06/z1/simulation/qsim/Waveform2.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off z1 -c z1 --vector_source="D:/repos/hse_SoC/lab_06/z1/Waveform2.vwf" --testbench_file="D:/repos/hse_SoC/lab_06/z1/simulation/qsim/Waveform2.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="D:/repos/hse_SoC/lab_06/z1/simulation/qsim/" z1 -c z1</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="D:/repos/hse_SoC/lab_06/z1/simulation/qsim/" z1 -c z1</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vlog -work work z1.vo
 vlog -work work Waveform2.vwf.vt
-vsim -novopt -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.lab6_pwm_vlg_vec_tst
+vsim -novopt -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.gray_cnt_vlg_vec_tst
 vcd file -direction z1.msim.vcd
-vcd add -internal lab6_pwm_vlg_vec_tst/*
-vcd add -internal lab6_pwm_vlg_vec_tst/i1/*
+vcd add -internal gray_cnt_vlg_vec_tst/*
+vcd add -internal gray_cnt_vlg_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -26,10 +26,10 @@ quit -f
 vlib work
 vlog -work work z1.vo
 vlog -work work Waveform2.vwf.vt
-vsim -novopt -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.lab6_pwm_vlg_vec_tst
+vsim -novopt -c -t 1ps -L fiftyfivenm_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.gray_cnt_vlg_vec_tst
 vcd file -direction z1.msim.vcd
-vcd add -internal lab6_pwm_vlg_vec_tst/*
-vcd add -internal lab6_pwm_vlg_vec_tst/i1/*
+vcd add -internal gray_cnt_vlg_vec_tst/*
+vcd add -internal gray_cnt_vlg_vec_tst/i1/*
 proc simTimestamp {} {
     echo "Simulation time: $::now ps"
     if { [string equal running [runStatus]] } {
@@ -87,14 +87,64 @@ SIGNAL("clk")
 	PARENT = "";
 }
 
-SIGNAL("pwm_out")
+SIGNAL("enable")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "";
+}
+
+SIGNAL("gray")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 4;
+	LSB_INDEX = 0;
+	DIRECTION = OUTPUT;
+	PARENT = "";
+}
+
+SIGNAL("gray[3]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = OUTPUT;
-	PARENT = "";
+	PARENT = "gray";
+}
+
+SIGNAL("gray[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "gray";
+}
+
+SIGNAL("gray[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "gray";
+}
+
+SIGNAL("gray[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = OUTPUT;
+	PARENT = "gray";
 }
 
 SIGNAL("rst_n")
@@ -107,56 +157,6 @@ SIGNAL("rst_n")
 	PARENT = "";
 }
 
-SIGNAL("imp_width")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = BUS;
-	WIDTH = 4;
-	LSB_INDEX = 0;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("imp_width[3]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "imp_width";
-}
-
-SIGNAL("imp_width[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "imp_width";
-}
-
-SIGNAL("imp_width[1]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "imp_width";
-}
-
-SIGNAL("imp_width[0]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "imp_width";
-}
-
 TRANSITION_LIST("clk")
 {
 	NODE
@@ -164,14 +164,57 @@ TRANSITION_LIST("clk")
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 500;
-			LEVEL 0 FOR 1.0;
-			LEVEL 1 FOR 1.0;
+			REPEAT = 50;
+			LEVEL 0 FOR 10.0;
+			LEVEL 1 FOR 10.0;
 		}
 	}
 }
 
-TRANSITION_LIST("pwm_out")
+TRANSITION_LIST("enable")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 1;
+			LEVEL 0 FOR 32.0;
+			LEVEL 1 FOR 608.0;
+		}
+		LEVEL 0 FOR 32.0;
+		LEVEL 1 FOR 328.0;
+	}
+}
+
+TRANSITION_LIST("gray[3]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("gray[2]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("gray[1]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL X FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("gray[0]")
 {
 	NODE
 	{
@@ -185,68 +228,12 @@ TRANSITION_LIST("rst_n")
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 1 FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("imp_width[3]")
-{
-	NODE
-	{
-		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 1;
-			LEVEL 0 FOR 320.0;
-			LEVEL 1 FOR 320.0;
+			REPEAT = 2;
+			LEVEL 0 FOR 25.0;
+			LEVEL 1 FOR 475.0;
 		}
-		LEVEL 0 FOR 320.0;
-		LEVEL 1 FOR 40.0;
-	}
-}
-
-TRANSITION_LIST("imp_width[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 3;
-			LEVEL 0 FOR 160.0;
-			LEVEL 1 FOR 160.0;
-		}
-		LEVEL 0 FOR 40.0;
-	}
-}
-
-TRANSITION_LIST("imp_width[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 6;
-			LEVEL 0 FOR 80.0;
-			LEVEL 1 FOR 80.0;
-		}
-		LEVEL 0 FOR 40.0;
-	}
-}
-
-TRANSITION_LIST("imp_width[0]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 12;
-			LEVEL 0 FOR 40.0;
-			LEVEL 1 FOR 40.0;
-		}
-		LEVEL 0 FOR 40.0;
 	}
 }
 
@@ -261,7 +248,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "rst_n";
+	CHANNEL = "enable";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 1;
@@ -270,7 +257,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "pwm_out";
+	CHANNEL = "rst_n";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
@@ -279,7 +266,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "imp_width";
+	CHANNEL = "gray";
 	EXPAND_STATUS = EXPANDED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
@@ -289,7 +276,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "imp_width[3]";
+	CHANNEL = "gray[3]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
@@ -299,7 +286,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "imp_width[2]";
+	CHANNEL = "gray[2]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 5;
@@ -309,7 +296,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "imp_width[1]";
+	CHANNEL = "gray[1]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 6;
@@ -319,7 +306,7 @@ DISPLAY_LINE
 
 DISPLAY_LINE
 {
-	CHANNEL = "imp_width[0]";
+	CHANNEL = "gray[0]";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 7;
