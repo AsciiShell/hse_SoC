@@ -46,13 +46,75 @@
 	
 	\subsection{Задание 1}
 	
+	Был разработан счетчик размерностью 8 бит (коэффициент пересчета 256).
+	Результат моделирования на рис. \ref{fig:z1_rtl}. Результат тестирования на рис. \ref{fig:z1_test}.
+	 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z1_rtl}
+		\caption{RTL-схема для обычного счетчика}
+		\label{fig:z1_rtl}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z1_test}
+		\caption{Результат тестирования обычного счетчика}
+		\label{fig:z1_test}
+	\end{figure}
+
+	Был разработан счетчик такой же размерности с возможностью подсчета в положительную и отрицательную сторону, в зависимости от сигнала.
+	Результат моделирования на рис. \ref{fig:z2_rtl}. Результат тестирования на рис. \ref{fig:z2_test}.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z2_rtl}
+		\caption{RTL-схема для счетчика с направлением подсчета}
+		\label{fig:z2_rtl}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z2_test}
+		\caption{Результат тестирования для счетчика с направлением подсчета}
+		\label{fig:z2_test}
+	\end{figure}
+
 	\subsection{Задание 2}
 	
+	Исходный код модуля понижал частоту в $2^{24} = 16777216$ раз.
+	Такое изменение трудно заметить на симуляции, поэтому код модуля был изменен для понижения частоты в $2^8 = 256$ раз.
 	
-	\subsection{Задание 3}
+	Исходный код модуля.
+	
+	\VerbatimInput{../z1/clk_divider.v}
+	
+	В оригинальном модуле коэффициент заполнения был равен 50\%.
+	Действительно, выходной сигнал был активен в половине случаев.
+	Для понижения коэффициента заполнения до 20\% было вычислено значение, начиная с которого необходимо выводить высокий уровень сигнала.
+	Результат симуляции на рис. \ref{fig:z3}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z3}
+		\caption{Результат тестирования понижателя частоты}
+		\label{fig:z3}
+	\end{figure}
 
 	\subsection{Задание 3}
+
+	Чем больше коэффициент заполнения на сигнале ШИМ, тем ярче горит светодиод.
+	Пример тестирования представлен на рис. \ref{fig:z4}.
+	В результате тестирования яркость светодиода будет постепенно возрастать.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z4}
+		\caption{Результат тестирования ШИМ}
+		\label{fig:z4}
+	\end{figure}
+
+	\subsection{Задание 4}
 	
 	\subsection{Задание 5}
 	
