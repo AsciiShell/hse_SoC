@@ -6,10 +6,10 @@ module try_dop
   input                      clk,
   input                      rst_n,
   input                      enable,
-  output  [WIDTH - 1 : 0] bin_inc 
+  output reg [WIDTH - 1 : 0] bin 
  );
 
-  reg [WIDTH - 1 : 0]       bin;
+  wire [WIDTH - 1 : 0]       bin_inc;
   
   always@(posedge clk or negedge rst_n)
     if(!rst_n)begin
