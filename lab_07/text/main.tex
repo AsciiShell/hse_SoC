@@ -94,7 +94,7 @@
 
 	\subsection{Задание 3}
 	
-	RLT диаграмма на рис. \ref{fig:z3_rtl}. Technology Мар Viewer на рис. \ref{fig:z3_tmv}.
+	RTL диаграмма на рис. \ref{fig:z3_rtl}. Technology Мар Viewer на рис. \ref{fig:z3_tmv}.
 	
 	\begin{figure}[H]
 		\centering
@@ -110,200 +110,104 @@
 		\label{fig:z3_tmv}
 	\end{figure}
 	
-	
 	\subsection{Задание 4}
 	
-	\VerbatimInput{../z1/dual_port_RAM.v}
+	RTL диаграмма на рис. \ref{fig:z4_rtl_16bit}. Результаты компиляции для 8 и 16 разрядов соответственно на рис. \ref{fig:z4_res_8bit} и рис. \ref{fig:z4_res_16bit}.
 	
-	Выделяемая память зависит от длины адреса следующим образом: $M = 2^{adr + 3}$
-	
-	RTL-схема представлена на рис. \ref{fig:z4_rtl_16bit}.
-	Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z4_res_8bit} - \ref{fig:z4_res_16bit}.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/z4_rtl_16bit}
-		\caption{RTL-схема}
+		\includegraphics[width=0.8\linewidth]{images/z4_rtl_16bit}
+		\caption{RTL-схема для 16 разрядов}
 		\label{fig:z4_rtl_16bit}
 	\end{figure}
-
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/z4_res_8bit}
-		\caption{Результат компиляции 8-битной двухпортовой памяти}
+		\includegraphics[width=0.7\linewidth]{images/z4_res_8bit}
+		\caption{Результаты компиляции для 8 разрядов}
 		\label{fig:z4_res_8bit}
 	\end{figure}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\linewidth]{images/z4_res_10bit}
-		\caption{Результат компиляции 10-битной двухпортовой памяти}
-		\label{fig:z4_res_10bit}
-	\end{figure}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\linewidth]{images/z4_res_12bit}
-		\caption{Результат компиляции 12-битной двухпортовой памяти}
-		\label{fig:z4_res_12bit}
-	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/z4_res_16bit}
-		\caption{Результат компиляции 16-битной двухпортовой памяти}
+		\includegraphics[width=0.7\linewidth]{images/z4_res_16bit}
+		\caption{Результаты компиляции для 16 разрядов}
 		\label{fig:z4_res_16bit}
 	\end{figure}
-
+	
 	\subsection{Задание 5}
 	
-	\VerbatimInput{../z1/lab7_6.v}
-	
-	\VerbatimInput{../z1/lab7_7.v}
-	
-	Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z5_res_32} - \ref{fig:z5_res_256	}.
-
+	Результаты компиляции для глубины стека 32 и 256 соответственно на рис. \ref{fig:z5_res_32} и рис. \ref{fig:z5_res_256}.
+		
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/z5_res_32}
-		\caption{Результат компиляции стека на 32 элемента}
+		\includegraphics[width=0.7\linewidth]{images/z5_res_32}
+		\caption{Результаты компиляции для 8 разрядов}
 		\label{fig:z5_res_32}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/z5_res_64}
-		\caption{Результат компиляции стека на 64 элемента}
-		\label{fig:z5_res_64}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\linewidth]{images/z5_res_128}
-		\caption{Результат компиляции стека на 128 элемента}
-		\label{fig:z5_res_128}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.8\linewidth]{images/z5_res_256}
-		\caption{Результат компиляции стека на 256 элемента}
+		\includegraphics[width=0.7\linewidth]{images/z5_res_256}
+		\caption{Результаты компиляции для 16 разрядов}
 		\label{fig:z5_res_256}
 	\end{figure}
-
+	
 	\subsection{Задание 6}
+	
+	Текст кода первой реализации очереди:
+	
+	\VerbatimInput{../z1/lab7_6_q.v}
+	
+	RTL представление и TMV для глубины в 256 для первой реализации очереди представлено на рис.  \ref{fig:z6_rtl_256_v1} и  \ref{fig:z6_tmv_256_v1} соответственно:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_rtl_256_v1}
+		\caption{RTL-схема для глубины 256}
+		\label{fig:z6_rtl_256_v1}
+	\end{figure}
 
-	\subsubsection{Вариант 1}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_tmv_256_v1}
+		\caption{TMV представление для глубины 256}
+		\label{fig:z6_tmv_256_v1}
+	\end{figure}
 	
-		\VerbatimInput{../z1/lab7_6_q.v}
-		
-		Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z6_res_32_v1}, \ref{fig:z6_res_256_v1}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_res_32_v1}
-			\caption{Результат компиляции очереди на 32 элемента}
-			\label{fig:z6_res_32_v1}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_res_256_v1}
-			\caption{Результат компиляции очереди на 256 элемента}
-			\label{fig:z6_res_256_v1}
-		\end{figure}
+	Текст кода второй реализации очереди:
 	
-		RTL диаграммы для различной разрядности доступны на рис. \ref{fig:z6_rtl_32_v1}, \ref{fig:z6_rtl_256_v1}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_rtl_32_v1}
-			\caption{RTL диаграммы для очереди на 32 элемента}
-			\label{fig:z6_rtl_32_v1}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.5\linewidth]{images/z6_rtl_256_v1}
-			\caption{RTL диаграммы для очереди на 256 элемента}
-			\label{fig:z6_rtl_256_v1}
-		\end{figure}
+	\VerbatimInput{../z1/lab7_7_q.v}
 	
-		RTL диаграммы для различной разрядности доступны на рис. \ref{fig:z6_tmv_32_v1}, \ref{fig:z6_tmv_256_v1}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_tmv_32_v1}
-			\caption{TMV диаграммы для очереди на 32 элемента}
-			\label{fig:z6_tmv_32_v1}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.5\linewidth]{images/z6_tmv_256_v1}
-			\caption{TMV диаграммы для очереди на 256 элемента}
-			\label{fig:z6_tmv_256_v1}
-		\end{figure}
+	RTL представление и TMV для глубины в 256 для второй реализации очереди представлено на рис.  \ref{fig:z6_rtl_256_v2} и  \ref{fig:z6_tmv_256_v2} соответственно:
 	
-	\subsubsection{Вариант 2}
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_rtl_256_v2}
+		\caption{RTL-схема для глубины 256}
+		\label{fig:z6_rtl_256_v2}
+	\end{figure}
 	
-		\VerbatimInput{../z1/lab7_7_q.v}
-	
-		Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z6_res_32_v2}, \ref{fig:z6_res_256_v2}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_res_32_v2}
-			\caption{Результат компиляции очереди на 32 элемента}
-			\label{fig:z6_res_32_v2}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_res_256_v2}
-			\caption{Результат компиляции очереди на 256 элемента}
-			\label{fig:z6_res_256_v2}
-		\end{figure}
-		
-		RTL диаграммы для различной разрядности доступны на рис. \ref{fig:z6_rtl_32_v2}, \ref{fig:z6_rtl_256_v2}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_rtl_32_v2}
-			\caption{RTL диаграммы для очереди на 32 элемента}
-			\label{fig:z6_rtl_32_v2}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.5\linewidth]{images/z6_rtl_256_v2}
-			\caption{RTL диаграммы для очереди на 256 элемента}
-			\label{fig:z6_rtl_256_v2}
-		\end{figure}
-		
-		RTL диаграммы для различной разрядности доступны на рис. \ref{fig:z6_tmv_32_v2}, \ref{fig:z6_tmv_256_v2}.
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z6_tmv_32_v2}
-			\caption{TMV диаграммы для очереди на 32 элемента}
-			\label{fig:z6_tmv_32_v2}
-		\end{figure}
-		
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.5\linewidth]{images/z6_tmv_256_v2}
-			\caption{TMV диаграммы для очереди на 256 элемента}
-			\label{fig:z6_tmv_256_v2}
-		\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_tmv_256_v2}
+		\caption{TMV представление для глубины 256}
+		\label{fig:z6_tmv_256_v2}
+	\end{figure}
 	
 	\subsection{Задание 7}
 	
+	Текст кода:
+	
 	\VerbatimInput{../z1/SRAM_BANK_xN.v}
 	
+		
 	\section{Задания для самостоятельной работы}
 	
 	Разработайте схему простой двухпортовой памяти, которая будет хранить данные о
 	цветном изображении с глубиной цвета 8 бит и разрешением 212х104.
+	
+	Текст кода:
 	
 	\VerbatimInput{../z1/images.v}
 			
