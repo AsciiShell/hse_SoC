@@ -111,10 +111,95 @@
 	\end{figure}
 	
 	
+	\subsection{Задание 4}
+	
+	\VerbatimInput{../z1/dual_port_RAM.v}
+	
+	Выделяемая память зависит от длины адреса следующим образом: $M = 2^{adr + 3}$
+	
+	RTL-схема представлена на рис. \ref{fig:z4_rtl_16bit}.
+	Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z4_res_8bit} - \ref{fig:z4_res_16bit}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z4_rtl_16bit}
+		\caption{RTL-схема}
+		\label{fig:z4_rtl_16bit}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z4_res_8bit}
+		\caption{Результат компиляции 8-битной двухпортовой памяти}
+		\label{fig:z4_res_8bit}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z4_res_10bit}
+		\caption{Результат компиляции 10-битной двухпортовой памяти}
+		\label{fig:z4_res_10bit}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z4_res_12bit}
+		\caption{Результат компиляции 12-битной двухпортовой памяти}
+		\label{fig:z4_res_12bit}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z4_res_16bit}
+		\caption{Результат компиляции 16-битной двухпортовой памяти}
+		\label{fig:z4_res_16bit}
+	\end{figure}
+
+	\subsection{Задание 5}
+	
+	\VerbatimInput{../z1/lab7_6.v}
+	
+	\VerbatimInput{../z1/lab7_7.v}
+	
+	Результаты компиляции для различной разрядности доступны на рис. \ref{fig:z5_res_32} - \ref{fig:z5_res_256	}.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z5_res_32}
+		\caption{Результат компиляции стека на 32 элемента}
+		\label{fig:z5_res_32}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z5_res_64}
+		\caption{Результат компиляции стека на 64 элемента}
+		\label{fig:z5_res_64}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z5_res_128}
+		\caption{Результат компиляции стека на 128 элемента}
+		\label{fig:z5_res_128}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z5_res_256}
+		\caption{Результат компиляции стека на 256 элемента}
+		\label{fig:z5_res_256}
+	\end{figure}
+	\subsection{Задание 6}
+	
+	\subsection{Задание 7}
+	
+	
 	\section{Задания для самостоятельной работы}
 	
 	Разработайте схему простой двухпортовой памяти, которая будет хранить данные о
 	цветном изображении с глубиной цвета 8 бит и разрешением 212х104.
+	
+	\VerbatimInput{../z1/images.v}
 			
 	\section{Контрольные вопросы}
 	
@@ -147,7 +232,7 @@
 		
 		\item Что такое «информационная емкость»? Как ее рассчитать?
 		
-		$ data_width * 2 ^ {address_width} $
+		$ data\_width * 2 ^ {address\_width} $
 		
 		Суммарный возможный объем памяти для данных параметров ширины шины адреса и данных.
 		
