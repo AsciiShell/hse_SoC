@@ -52,7 +52,7 @@
 	
 	\subsection{Задание 1}
 	
-	На RTL представлении можно видеть 2 блока: первый это синхронный D-триггер в который записывается текущий адрес, второй блок представлен блолом RAM. На TMV можно видеть 8 синхронный однобитных D-триггеров, в которых хранится текущий адрес. Информация хранится в 8 блоках RAM по 256 бит каждый.
+	На RTL представлении можно видеть 2 блока: первый это синхронный D-триггер в который записывается текущий адрес, второй блок представлен блоком RAM. На TMV можно видеть 8 синхронный однобитных D-триггеров, в которых хранится текущий адрес. Информация хранится в 8 блоках RAM по 256 бит каждый.
 	
 	RLT диаграмма на рис. \ref{fig:z1_rtl}. Technology Мар Viewer на рис. \ref{fig:z1_tmv}.
 	 
@@ -71,6 +71,44 @@
 	\end{figure}
 
 	\VerbatimInput{../z1/lab7_3.v}
+	
+	\subsection{Задание 2}
+	
+	Результат компиляции на рис. \ref{fig:z2_report}. Результат симуляции на рис. \ref{fig:z2_sim}.
+	
+	\VerbatimInput{../z2/lab7_rom.v}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z2_report}
+		\caption{Отчет о компиляции}
+		\label{fig:z2_report}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z2_sim}
+		\caption{Результат симуляции}
+		\label{fig:z2_sim}
+	\end{figure}
+
+	\subsection{Задание 3}
+	
+	RLT диаграмма на рис. \ref{fig:z3_rtl}. Technology Мар Viewer на рис. \ref{fig:z3_tmv}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z3_rtl}
+		\caption{RTL-схема}
+		\label{fig:z3_rtl}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z3_tmv}
+		\caption{Technology Мар Viewer}
+		\label{fig:z3_tmv}
+	\end{figure}
 	
 	
 	\section{Задания для самостоятельной работы}
