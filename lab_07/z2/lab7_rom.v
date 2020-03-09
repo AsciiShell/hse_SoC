@@ -9,7 +9,10 @@ module lab7_rom
     wire w_clk = ~ clk;
     reg [16:0] addr_reg;
 	 reg [31:0] data_reg;
-    altera_flash altera_flash(.clock(clk), .avmm_data_addr(addr_reg), .avmm_data_readdata(data_reg));
+    altera_flash altera_flash(.clock(clk), 
+		.avmm_data_read(1),
+		.avmm_data_addr(addr_reg),
+		.avmm_data_readdata(data_reg));
 	 
 	 
     
