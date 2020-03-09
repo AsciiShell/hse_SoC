@@ -94,7 +94,7 @@
 
 	\subsection{Задание 3}
 	
-	RLT диаграмма на рис. \ref{fig:z3_rtl}. Technology Мар Viewer на рис. \ref{fig:z3_tmv}.
+	RTL диаграмма на рис. \ref{fig:z3_rtl}. Technology Мар Viewer на рис. \ref{fig:z3_tmv}.
 	
 	\begin{figure}[H]
 		\centering
@@ -110,11 +110,106 @@
 		\label{fig:z3_tmv}
 	\end{figure}
 	
+	\subsection{Задание 4}
 	
+	RTL диаграмма на рис. \ref{fig:z4_rtl_16bit}. Результаты компиляции для 8 и 16 разрядов соответственно на рис. \ref{fig:z4_res_8bit} и рис. \ref{fig:z4_res_16bit}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z4_rtl_16bit}
+		\caption{RTL-схема для 16 разрядов}
+		\label{fig:z4_rtl_16bit}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z4_res_8bit}
+		\caption{Результаты компиляции для 8 разрядов}
+		\label{fig:z4_res_8bit}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z4_res_16bit}
+		\caption{Результаты компиляции для 16 разрядов}
+		\label{fig:z4_res_16bit}
+	\end{figure}
+	
+	\subsection{Задание 5}
+	
+	Результаты компиляции для глубины стека 32 и 256 соответственно на рис. \ref{fig:z5_res_32} и рис. \ref{fig:z5_res_256}.
+		
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z5_res_32}
+		\caption{Результаты компиляции для 8 разрядов}
+		\label{fig:z5_res_32}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z5_res_256}
+		\caption{Результаты компиляции для 16 разрядов}
+		\label{fig:z5_res_256}
+	\end{figure}
+	
+	\subsection{Задание 6}
+	
+	Текст кода первой реализации очереди:
+	
+	\VerbatimInput{../z1/lab7_6_q.v}
+	
+	RTL представление и TMV для глубины в 256 для первой реализации очереди представлено на рис.  \ref{fig:z6_rtl_256_v1} и  \ref{fig:z6_tmv_256_v1} соответственно:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_rtl_256_v1}
+		\caption{RTL-схема для глубины 256}
+		\label{fig:z6_rtl_256_v1}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_tmv_256_v1}
+		\caption{TMV представление для глубины 256}
+		\label{fig:z6_tmv_256_v1}
+	\end{figure}
+	
+	Текст кода второй реализации очереди:
+	
+	\VerbatimInput{../z1/lab7_7_q.v}
+	
+	RTL представление и TMV для глубины в 256 для второй реализации очереди представлено на рис.  \ref{fig:z6_rtl_256_v2} и  \ref{fig:z6_tmv_256_v2} соответственно:
+	
+		\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_rtl_256_v2}
+		\caption{RTL-схема для глубины 256}
+		\label{fig:z6_rtl_256_v2}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z6_tmv_256_v2}
+		\caption{TMV представление для глубины 256}
+		\label{fig:z6_tmv_256_v2}
+	\end{figure}
+	
+	\subsection{Задание 7}
+	
+	Текст кода:
+	
+	\VerbatimInput{../z1/SRAM_BANK_xN.v}
+	
+		
 	\section{Задания для самостоятельной работы}
 	
 	Разработайте схему простой двухпортовой памяти, которая будет хранить данные о
 	цветном изображении с глубиной цвета 8 бит и разрешением 212х104.
+	
+	Текст кода:
+	
+	\VerbatimInput{../z1/images.v}
 			
 	\section{Контрольные вопросы}
 	
