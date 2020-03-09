@@ -1,0 +1,21 @@
+# system info altera_flash on 2020.03.09.20:49:43
+system_info:
+name,value
+DEVICE,10M50DAF484C7G
+DEVICE_FAMILY,MAX 10
+GENERATION_ID,1583772580
+#
+#
+# Files generated for altera_flash on 2020.03.09.20:49:43
+files:
+filepath,kind,attributes,module,is_top
+simulation/altera_flash.v,VERILOG,,altera_flash,true
+simulation/submodules/altera_onchip_flash_util.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash_avmm_data_controller.v,VERILOG,,altera_onchip_flash,false
+simulation/submodules/altera_onchip_flash_avmm_csr_controller.v,VERILOG,,altera_onchip_flash,false
+#
+# Map from instance-path to kind of module
+instances:
+instancePath,module
+altera_flash.onchip_flash_0,altera_onchip_flash
