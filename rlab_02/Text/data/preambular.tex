@@ -113,7 +113,7 @@
 \newcommand{\tablecaption}[1]{\addtocounter{table}{1}\small \begin{flushright}\tablename \ \thetable\end{flushright}%	
 \begin{center}#1\end{center}}
 
-\newcommand{\imref}[1]{Рис.~\ref{#1}}
+\newcommand{\imref}[1]{рис.~\ref{#1}}
 
 \usepackage{multirow}
 \usepackage{spreadtab}
@@ -129,3 +129,6 @@
 }
 
 \newcolumntype{?}[1]{!{\vrule width #1}}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
