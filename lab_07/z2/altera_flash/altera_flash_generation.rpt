@@ -1,0 +1,64 @@
+Info: Starting: Create simulation model
+Info: qsys-generate C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash.qsys --simulation=VERILOG --allow-mixed-language-simulation --output-directory=C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash\simulation --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading z2/altera_flash.qsys
+Progress: Reading input file
+Progress: Adding onchip_flash_0 [altera_onchip_flash 17.1]
+Progress: Parameterizing module onchip_flash_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: altera_flash: Generating altera_flash "altera_flash" for SIM_VERILOG
+Info: onchip_flash_0: "altera_flash" instantiated altera_onchip_flash "onchip_flash_0"
+Info: altera_flash: Done "altera_flash" with 2 modules, 5 files
+Info: qsys-generate succeeded.
+Info: Finished: Create simulation model
+Info: Starting: Create Modelsim Project.
+Info: sim-script-gen --spd=C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash\altera_flash.spd --output-directory=C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ --use-relative-paths=true
+Info: Doing: ip-make-simscript --spd=C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash\altera_flash.spd --output-directory=C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ --use-relative-paths=true
+Info: Generating the following file(s) for MODELSIM simulator in C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ directory:
+Info: 	mentor/msim_setup.tcl
+Info: Generating the following file(s) for VCS simulator in C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ directory:
+Info: 	synopsys/vcs/vcs_setup.sh
+Info: Generating the following file(s) for VCSMX simulator in C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ directory:
+Info: 	synopsys/vcsmx/synopsys_sim.setup
+Info: 	synopsys/vcsmx/vcsmx_setup.sh
+Info: Generating the following file(s) for NCSIM simulator in C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ directory:
+Info: 	cadence/cds.lib
+Info: 	cadence/hdl.var
+Info: 	cadence/ncsim_setup.sh
+Info: 	1 .cds.lib files in cadence/cds_libs/ directory
+Info: Generating the following file(s) for RIVIERA simulator in C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/ directory:
+Info: 	aldec/rivierapro_setup.tcl
+Info: For information on how to simulate your IP, see the explanatory comments in the simulator-specific subdirectories under C:/Users/alex1/Projects/hse_SoC/lab_07/z2/altera_flash/simulation/.
+Info: Regenerate these scripts whenever you make any change to any Quartus-generated IP in your project.
+Info: Finished: Create Modelsim Project.
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash.qsys --block-symbol-file --output-directory=C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading z2/altera_flash.qsys
+Progress: Reading input file
+Progress: Adding onchip_flash_0 [altera_onchip_flash 17.1]
+Progress: Parameterizing module onchip_flash_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash.qsys --synthesis=VERILOG --output-directory=C:\Users\alex1\Projects\hse_SoC\lab_07\z2\altera_flash\synthesis --family="MAX 10" --part=10M50DAF484C7G
+Progress: Loading z2/altera_flash.qsys
+Progress: Reading input file
+Progress: Adding onchip_flash_0 [altera_onchip_flash 17.1]
+Progress: Parameterizing module onchip_flash_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: altera_flash: Generating altera_flash "altera_flash" for QUARTUS_SYNTH
+Info: onchip_flash_0: Generating top-level entity altera_onchip_flash
+Info: onchip_flash_0: "altera_flash" instantiated altera_onchip_flash "onchip_flash_0"
+Info: altera_flash: Done "altera_flash" with 2 modules, 7 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis
