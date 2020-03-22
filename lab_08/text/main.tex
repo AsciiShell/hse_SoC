@@ -1,0 +1,222 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+	\input{data/title.tex}
+	\tableofcontents
+	\pagebreak
+	\section{Задание}
+	
+	\begin{enumerate}
+		\item В приведенной выше реализации автомата Мура задайте различные способы кодирования
+		состояний и сравните результаты компиляции.
+		
+		\item В приведенной выше реализации автомата Мили задайте различные способы кодирования
+		состояний и сравните результаты компиляции.
+	\end{enumerate}
+	
+	\section{Дополнительные задания}
+	
+	\subsection{Задание 1}
+	
+	Автомат Мура был собран со следующими способами кодирования: последовательный, one hot encoding, код Грея.
+	Код Джонсона для 3 состояний совпадает с кодом Грея.
+	Результат компиляции, а так же RTL диаграмма совпали для каждого варианта.
+	Результаты для последовательного кодирования представлены на рис. \ref{fig:z1_bin_report} и \ref{fig:z1_bin_rtl}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z1_bin_report}
+		\caption{Результат компиляции автомата Мура с последовательным кодированием состояния}
+		\label{fig:z1_bin_report}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z1_bin_rtl}
+		\caption{RTL-схема автомата Мура с последовательным кодированием состояния}
+		\label{fig:z1_bin_rtl}
+	\end{figure}
+
+	\subsection{Задание 2}
+	
+	Автомат Мили был собран со следующими способами кодирования: one hot encoding, код Грея.
+	Как и в задании 1, результат компиляции, а так же RTL диаграмма совпали для каждого варианта.
+	Это можно объяснить тем, что представление кода хранится и обрабатывается в блоке $state$, его состояние не доступно снаружи схемы.
+	На небольших примерах способы кодирования не сильно отличаются размерностью, поэтому нет отличий в результатах компиляции по используемым ресурсам.
+	Результаты для последовательного кодирования представлены на рис. \ref{fig:z2_gray_report} и \ref{fig:z2_gray_rtl}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z2_gray_report}
+		\caption{Результат компиляции автомата Мили с кодированием состояния кодом Грея}
+		\label{fig:z2_gray_report}
+	\end{figure}	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/z2_gray_rtl}
+		\caption{RTL-схема автомата Мили с кодированием состояния кодом Грея}
+		\label{fig:z2_gray_rtl}
+	\end{figure}
+
+	\section{Задания для самостоятельной работы}
+
+	\subsection{Задание 1}
+	
+	В соответствии с таблицей своего варианта (рис. \ref{fig:extra_table}) постройте граф конечного автомата.
+	Разработайте код конечного автомата с комбинационными выходами и синхронными
+	выходами. Выполните компиляцию проекта и синтезируйте RТL-представление проекта.
+	Проведите моделирование конечного автомата
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_table}
+		\caption{Дополнительное задание}
+		\label{fig:extra_table}
+	\end{figure}
+
+	Исходный код конечного автомата:
+	\VerbatimInput{../extra/extra.v}
+	
+	RTL-диаграмма и State Machine View доступны на рис. \ref{fig:extra_rtl} и \ref{fig:extra_machine} соответственно.
+	По результатам наблюдений, граф конечного автомата совпал с заранее созданным графом.
+	Результат симуляции изображен на рис. \ref{fig:extra_sim}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_rtl}
+		\caption{RTL-диаграмма для конечного автомата}
+		\label{fig:extra_rtl}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_machine}
+		\caption{State Machine Viewа для конечного автомата}
+		\label{fig:extra_machine}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_sim}
+		\caption{Результат симуляции для конечного автомата}
+		\label{fig:extra_sim}
+	\end{figure}
+
+	\subsection{Задание 2}
+	
+	Напишите возле каждой диаграммы состояния (Рисунок 8.22) имя соответствующего модуля из Листинга 8.9.
+	
+	Решение на рис. \ref{fig:extra_2}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_2}
+		\caption{Решение задания 2}
+		\label{fig:extra_2}
+	\end{figure}
+	
+	
+	\subsection{Задание 3}
+	
+	Напишите возле каждого рисунка (Рисунок 8.23) имя соответствующего модуля из Листинга 8.10.
+	
+	Решение на рис. \ref{fig:extra_3}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{images/extra_3}
+		\caption{Решение задания 3}
+		\label{fig:extra_3}
+	\end{figure}
+
+	\section{Контрольные вопросы}
+	
+	\begin{enumerate}
+		\item Приведите схему конечного автомата Мура.
+		
+		В автомате Мура выходной сигнал зависит только от текущего состояния системы (рис. \ref{fig:q1}).
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\linewidth]{images/q1}
+			\caption{Схема автомата Мура}
+			\label{fig:q1}
+		\end{figure}
+	
+		\item Приведите пример описания конечного автомата Мура на Verilog.
+		
+		Исходный код конечного автомата Мура с кодированием состояния методом one hot encoding:
+		\VerbatimInput{../z1/lab8_ohe.v}
+		
+		\item Приведите пример описания конечного автомата Мили на Verilog.
+		
+		Исходный код конечного автомата Мили с кодированием состояния методом one hot encoding:
+		\VerbatimInput{../z2/lab8_ohe.v}
+		
+		\item Как происходит кодирование конечных автоматов в State Machine Viewer Quartus
+		Prime?
+		
+		Каждое состояние описывается кругом, направления возможных переходов показаны стрелками.
+		Вход в граф показан отдельной стрелкой, что означает положение по-умолчанию.
+		
+		\item Приведите схему конечного автомата Мили.
+		
+		В автомате Мили выходной сигнал зависит не только от текущего состояния системы, но и от входных сигналов (рис. \ref{fig:q5}).
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=\linewidth]{images/q5}
+			\caption{Схема автомата Мили}
+			\label{fig:q5}
+		\end{figure}
+		
+		\item Приведите примеры методов кодирования конечных автоматов. Охарактеризуйте их.
+		
+		Существует несколько способов кодирования состояния конечных автоматов:
+		
+		\begin{enumerate}
+			\item one hot -- все биты, кроме одного, равны 0; единственный ненулевой бит обозначает порядковый номер состояния;
+			
+			\item Sequential -- каждое состояние кодируется порядковым номером в битовом представлении;
+			
+			\item Gray -- каждое состояние кодируется кодом Грея;
+			
+			\item Johnson -- каждое состояние кодируется кодом Джонсона, аналогичному коду Грея, но требующему меньше логики.
+		\end{enumerate}
+	
+		Кроме того, пользователь может сам закодировать состояния конечного автомата любой желаемой константой.
+		
+		Достоинство первого способа в том, что сигнал уже декодирован и не требует сложной логики для работы. С другой стороны, метод one-hot требует N бит памяти, что для автоматов с большим количеством состояний будет не самым эффективным решением по памяти.
+		
+	\end{enumerate}
+	
+	\section{Выводы по работе}
+	
+	В ходе работы получен опыт проектирования схем в программе Quartus с помощью языка Verilog.
+	Полученное устройство было протестировано с помощью бенчтестов в программе Quartus Simulation Waveform editor.
+	В процессе работы были смоделированы конечные автоматы Мура и Мили.
+	%В процессе работы были смоделированы различные шифраторы и дешифраторы, протестированы способы оптимизации схемы, а так же рассчитаны временные параметры схемы с различными способами оптимизации.
+	В процессе был получен опыт работы с платой DE10-Lite, на которой проверялась работоспособность полученного устройства.
+	
+	\newpage 
+	\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+	\centering 
+	\begin{thebibliography}{9} 
+		\addcontentsline{toc}{section}{\refname} 
+		\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+		\bibitem{citekey} Khor W. Y. et al. Evaluation of FPGA Based QSPI Flash Access Using Partial Reconfiguration //2019 7th International Conference on Smart Computing \& Communications (ICSCC). – IEEE, 2019. – С. 1-5
+	\end{thebibliography}
+	
+\end{document} % конец документа
