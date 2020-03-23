@@ -1,8 +1,8 @@
 /*<simulation_settings>
-<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off rlab_02 -c rlab_02 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
-<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off rlab_02 -c rlab_02 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
-<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/simulation/qsim/" rlab_02 -c rlab_02</fnetlist_cmd>
-<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_02/lab/simulation/qsim/" rlab_02 -c rlab_02</tnetlist_cmd>
+<ftestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off rlab_02 -c rlab_02 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/simulation/qsim/Waveform.vwf.vt"</ftestbench_cmd>
+<ttestbench_cmd>quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off rlab_02 -c rlab_02 --vector_source="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/Waveform.vwf" --testbench_file="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/simulation/qsim/Waveform.vwf.vt"</ttestbench_cmd>
+<fnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=on --flatten_buses=off --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/simulation/qsim/" rlab_02 -c rlab_02</fnetlist_cmd>
+<tnetlist_cmd>quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/alex1/Projects/hse_SoC/rlab_03/lab/simulation/qsim/" rlab_02 -c rlab_02</tnetlist_cmd>
 <modelsim_script>onerror {exit -code 1}
 vlib work
 vlog -work work rlab_02.vo
@@ -20,8 +20,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
 </modelsim_script>
 <modelsim_script_timing>onerror {exit -code 1}
 vlib work
@@ -40,8 +38,6 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
 </modelsim_script_timing>
 <hdl_lang>verilog</hdl_lang>
 </simulation_settings>*/
@@ -79,72 +75,22 @@ HEADER
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("SW[0]")
+SIGNAL("LED[0]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = INPUT;
+	DIRECTION = OUTPUT;
 	PARENT = "";
 }
 
-SIGNAL("SW[1]")
+SIGNAL("SW")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("SW[2]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("SW[3]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("SW[4]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("SW[5]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("SW[6]")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
+	SIGNAL_TYPE = BUS;
+	WIDTH = 8;
+	LSB_INDEX = 0;
 	DIRECTION = INPUT;
 	PARENT = "";
 }
@@ -156,88 +102,131 @@ SIGNAL("SW[7]")
 	WIDTH = 1;
 	LSB_INDEX = -1;
 	DIRECTION = INPUT;
-	PARENT = "";
+	PARENT = "SW";
 }
 
-SIGNAL("LED[0]")
+SIGNAL("SW[6]")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
 	WIDTH = 1;
 	LSB_INDEX = -1;
-	DIRECTION = OUTPUT;
-	PARENT = "";
+	DIRECTION = INPUT;
+	PARENT = "SW";
 }
 
-GROUP("SW")
+SIGNAL("SW[5]")
 {
-	MEMBERS = "SW[0]", "SW[1]", "SW[2]", "SW[3]", "SW[4]", "SW[5]", "SW[6]", "SW[7]";
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
 }
 
-TRANSITION_LIST("SW[0]")
+SIGNAL("SW[4]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
+}
+
+SIGNAL("SW[3]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
+}
+
+SIGNAL("SW[2]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
+}
+
+SIGNAL("SW[1]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
+}
+
+SIGNAL("SW[0]")
+{
+	VALUE_TYPE = NINE_LEVEL_BIT;
+	SIGNAL_TYPE = SINGLE_BIT;
+	WIDTH = 1;
+	LSB_INDEX = -1;
+	DIRECTION = INPUT;
+	PARENT = "SW";
+}
+
+TRANSITION_LIST("LED[0]")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL 0 FOR 160.0;
-		LEVEL 1 FOR 840.0;
+		LEVEL X FOR 1000.0;
 	}
 }
 
-TRANSITION_LIST("SW[1]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL 1 FOR 160.0;
-		LEVEL 0 FOR 640.0;
-		LEVEL 1 FOR 200.0;
-	}
-}
-
-TRANSITION_LIST("SW[2]")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL 1 FOR 160.0;
-		LEVEL 0 FOR 320.0;
-		LEVEL 1 FOR 320.0;
-		LEVEL 0 FOR 200.0;
-	}
-}
-
-TRANSITION_LIST("SW[3]")
+TRANSITION_LIST("SW[7]")
 {
 	NODE
 	{
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 3;
-			LEVEL 1 FOR 160.0;
-			LEVEL 0 FOR 160.0;
+			REPEAT = 100;
+			LEVEL 0 FOR 5.0;
+			LEVEL 1 FOR 5.0;
 		}
-		LEVEL 1 FOR 40.0;
 	}
 }
 
-TRANSITION_LIST("SW[4]")
+TRANSITION_LIST("SW[6]")
 {
 	NODE
 	{
 		REPEAT = 1;
 		NODE
 		{
-			REPEAT = 6;
-			LEVEL 0 FOR 80.0;
-			LEVEL 1 FOR 80.0;
+			REPEAT = 50;
+			LEVEL 0 FOR 10.0;
+			LEVEL 1 FOR 10.0;
 		}
-		LEVEL 0 FOR 40.0;
 	}
 }
 
 TRANSITION_LIST("SW[5]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		NODE
+		{
+			REPEAT = 25;
+			LEVEL 0 FOR 20.0;
+			LEVEL 1 FOR 20.0;
+		}
+	}
+}
+
+TRANSITION_LIST("SW[4]")
 {
 	NODE
 	{
@@ -252,40 +241,47 @@ TRANSITION_LIST("SW[5]")
 	}
 }
 
-TRANSITION_LIST("SW[6]")
+TRANSITION_LIST("SW[3]")
 {
 	NODE
 	{
 		REPEAT = 1;
+		LEVEL 1 FOR 80.0;
 		NODE
 		{
-			REPEAT = 25;
-			LEVEL 0 FOR 20.0;
-			LEVEL 1 FOR 20.0;
+			REPEAT = 5;
+			LEVEL 0 FOR 80.0;
+			LEVEL 1 FOR 80.0;
 		}
+		LEVEL 0 FOR 80.0;
+		LEVEL 1 FOR 40.0;
 	}
 }
 
-TRANSITION_LIST("SW[7]")
+TRANSITION_LIST("SW[2]")
 {
 	NODE
 	{
 		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 50;
-			LEVEL 0 FOR 10.0;
-			LEVEL 1 FOR 10.0;
-		}
+		LEVEL 1 FOR 1000.0;
 	}
 }
 
-TRANSITION_LIST("LED[0]")
+TRANSITION_LIST("SW[1]")
 {
 	NODE
 	{
 		REPEAT = 1;
-		LEVEL X FOR 1000.0;
+		LEVEL 1 FOR 1000.0;
+	}
+}
+
+TRANSITION_LIST("SW[0]")
+{
+	NODE
+	{
+		REPEAT = 1;
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
@@ -390,7 +386,7 @@ DISPLAY_LINE
 
 TIME_BAR
 {
-	TIME = 10000;
+	TIME = 0;
 	MASTER = TRUE;
 }
 ;
