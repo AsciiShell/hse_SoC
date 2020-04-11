@@ -1,0 +1,98 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Создать одноразрядный и двуразрядный сумматор, создать вычитатель на базе сумматора.
+
+\section{Выполнение работы}
+
+Составим схему одноразрядного двоичного сумматора  (рис.~\ref{fig:baseline}).
+Данная схема принимает по биту для каждого числа и знак переноса, на выходе s получаем результат суммирования, на выходе $p_{out}$ -- перенос.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/baseline}
+	\caption{Схема одноразрядного сумматора}
+	\label{fig:baseline}
+\end{figure}
+
+Далее данную схему можно обернуть в один блок для упрощения разработки сложных схем.
+На рис.~\ref{fig:schema_sum} изображена схема сумматора с применением данного блока. 
+Сигнал переноса передается последовательно от одного сумматора к следующему.
+Результат тестирования на рис.~\ref{fig:wave_sum}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/schema_sum}
+	\caption{Схема двуразрядного сумматора}
+	\label{fig:schema_sum}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{image/wave_sum}
+	\caption{Тестирование двуразрядного сумматора}
+	\label{fig:wave_sum}
+\end{figure}
+
+Для работы вычитателя можно взять сумматор и инвертировать второе число.
+Полученная схема изображена на рис.~\ref{fig:schema_sub}.
+Waveform тестирования доступна на рис.~\ref{fig:wave_sub}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/schema_sub}
+	\caption{Схема двуразрядного вычитателя}
+	\label{fig:schema_sub}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{image/wave_sub}
+	\caption{Тестирование двуразрядного вычитателя}
+	\label{fig:wave_sub}
+\end{figure}
+
+Было произведено тестирование работы полученного устройства на плате.
+В данном примере (рис.~\ref{fig:demo}) из числа 1 (LEDR1, LEDR0) вычитается число 3 (LEDR3, LEDR2), индикатор SW0 говорит, что число отрицательное, а SW2 и SW1 показывает число -2 в дополнительном коде.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{image/demo}
+	\caption{Результат работы двуразрядного вычитателя}
+	\label{fig:demo}
+\end{figure}
+
+\section{Выводы по работе}
+
+В ходе работы был получен блок одинарного сумматора, который позволяет создавать сумматоры любой размерности. 
+Так же данное устройство способно выполнять функции вычитателя путем сложения заданного числа с инверсией второго слагаемого. 
+Разработанная схема была протестирована с помощью Waveform на соответствие полученного и ожидаемого результата.
+Итоговый вариант был проверен на плате DE10-Lite, наблюдения подтвердили работоспособность устройства и правильность работы.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа

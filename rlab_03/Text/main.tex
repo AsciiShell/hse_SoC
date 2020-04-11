@@ -1,0 +1,127 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Создать дешифратор адреса в диапазоне 0x873 -- 0x87D, исключая 0x876 и 0x87A.
+
+\section{Выполнение работы}
+
+Составим таблицу истинности для последнего шестнадцатеричного числа в значении адреса (таблица \ref{tab:form}).
+
+\begin{table}[H]
+	\caption{Таблица истинности}
+	\centering
+	\label{tab:form}
+	\begin{tabular}{|c|c|c|c?{2pt}c|}
+		\hline
+		$x_1$ & $x_2$ & $x_3$ & $x_4$ & $y$ \\ \hline
+		0     & 0     & 0     & 0     & 0   \\ \hline
+		0     & 0     & 0     & 1     & 0   \\ \hline
+		0     & 0     & 1     & 0     & 0   \\ \hline
+		0     & 0     & 1     & 1     & 1   \\ \hline
+		0     & 1     & 0     & 0     & 1   \\ \hline
+		0     & 1     & 0     & 1     & 1   \\ \hline
+		0     & 1     & 1     & 0     & 0   \\ \hline
+		0     & 1     & 1     & 1     & 1   \\ \hline
+		1     & 0     & 0     & 0     & 1   \\ \hline
+		1     & 0     & 0     & 1     & 1   \\ \hline
+		1     & 0     & 1     & 0     & 0   \\ \hline
+		1     & 0     & 1     & 1     & 1   \\ \hline
+		1     & 1     & 0     & 0     & 1   \\ \hline
+		1     & 1     & 0     & 1     & 1   \\ \hline
+		1     & 1     & 1     & 0     & 0   \\ \hline
+		1     & 1     & 1     & 1     & 0   \\ \hline
+	\end{tabular}
+\end{table}
+
+Создадим Диаграмму Вейча для заданной функции и оптимизируем заданную функцию (таблица \ref{tab:carno}).
+
+\begin{table}[H]
+	\centering
+	\caption{Диаграмма Вейча для заданной функции}
+	\label{tab:carno}
+	\begin{tabular}{cccccc}
+		& \multicolumn{2}{c}{$x_1$}                       & \multicolumn{2}{c}{$\bar{x_1}$}                 &                        \\ \cline{2-5}
+		\multicolumn{1}{c|}{\multirow{2}{*}{$x_1$}}       & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & $\bar{x_4}$            \\ \cline{2-5}
+		\multicolumn{1}{c|}{}                             & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multirow{2}{*}{$x_4$} \\ \cline{2-5}
+		\multicolumn{1}{c|}{\multirow{2}{*}{$\bar{x_2}$}} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} &                        \\ \cline{2-5}
+		\multicolumn{1}{c|}{}                             & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & $\bar{x_4}$            \\ \cline{2-5}
+		& $\bar{x_3}$            & \multicolumn{2}{c}{$x_3$}                       & $\bar{x_3}$            &                       
+	\end{tabular}
+\end{table}
+
+Получим выражение:
+
+\begin{equation}
+	y = x_1 \bar{x_3} + x_2 \bar{x_3} + \bar{x_2} x_3 x_4 + \bar{x_1} x_3 x_4
+\end{equation}
+
+Создадим по данному выражению схему в редакторе Quartus Prime Lite Edition (рис. \ref{fig:schema}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/schema}
+	\caption{Итоговая схема}
+	\label{fig:schema}
+\end{figure}
+
+На рис. \ref{fig:wave} изображена waveform для данного выражения.
+Можно убедиться в правильности работы схемы.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/wave}
+	\caption{Результат тестирования}
+	\label{fig:wave}
+\end{figure}
+
+На рис. \ref{fig:time} изображены временные задержки схемы.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/time}
+	\caption{Задержки схемы}
+	\label{fig:time}
+\end{figure}
+
+На рис. \ref{fig:demo} изображена ситуация, когда на вход схемы подано значение 7С, а на выходе дешифратора активный сигнал.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\linewidth]{image/demo}
+	\caption{Результат работы на плате}
+	\label{fig:demo}
+\end{figure}
+
+
+\section{Выводы по работе}
+
+В ходе работы были получены выражения в минимизированном варианте, получены результаты моделирования с оптимизацией схемы, рассчитаны временные задержки в с помощью Time Quest Timing Analyzer.
+Итоговый вариант был проверен на плате DE10-Lite, наблюдения подтвердили работоспособность устройства и правильность оптимизаций.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа
