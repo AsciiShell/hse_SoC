@@ -22,51 +22,104 @@
 
 \section{Выполнение работы}
 
-Составим схему одноразрядного двоичного сумматора  (рис.~\ref{fig:baseline}).
+Составим схему одноразрядного двоичного сумматора  (рис.~\ref{fig:schema_1}).
 Данная схема принимает по биту для каждого числа и знак переноса, на выходе s получаем результат суммирования, на выходе $p_{out}$ -- перенос.
+Результат тестирования и временные задержки представлены на рис.~\ref{fig:wave_1} и~\ref{fig:time_1} соответственно.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/baseline}
+	\includegraphics[width=\linewidth]{image/schema_1}
 	\caption{Схема одноразрядного сумматора}
-	\label{fig:baseline}
+	\label{fig:schema_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/wave_1}
+	\caption{Временные диаграмма одноразрядного сумматора}
+	\label{fig:wave_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/time_1}
+	\caption{Временные задержки одноразрядного сумматора}
+	\label{fig:time_1}
 \end{figure}
 
 Далее данную схему можно обернуть в один блок для упрощения разработки сложных схем.
-На рис.~\ref{fig:schema_sum} изображена схема сумматора с применением данного блока. 
+На рис.~\ref{fig:schema_2} изображена схема сумматора с применением данного блока. 
 Сигнал переноса передается последовательно от одного сумматора к следующему.
-Результат тестирования на рис.~\ref{fig:wave_sum}.
+Результат тестирования и временные задержки представлены на рис.~\ref{fig:wave_2} и~\ref{fig:time_2} соответственно.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/schema_sum}
+	\includegraphics[width=\linewidth]{image/schema_2}
 	\caption{Схема двуразрядного сумматора}
-	\label{fig:schema_sum}
+	\label{fig:schema_2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{image/wave_sum}
+	\includegraphics[width=0.5\linewidth]{image/wave_2}
 	\caption{Тестирование двуразрядного сумматора}
-	\label{fig:wave_sum}
+	\label{fig:wave_2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/time_2}
+	\caption{Временные задержки двуразрядного сумматора}
+	\label{fig:time_2}
+\end{figure}
+
+Аналогично был разработан четырехразрядный сумматор (рис. \ref{fig:schema_4}).
+Результат тестирования и временные задержки представлены на рис.~\ref{fig:wave_4} и~\ref{fig:time_4} соответственно.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/schema_4}
+	\caption{Схема четырехразрядного сумматора}
+	\label{fig:schema_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/wave_4}
+	\caption{Тестирование четырехразрядного сумматора}
+	\label{fig:wave_4}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/time_4}
+	\caption{Временные задержки четырехразрядного сумматора}
+	\label{fig:time_4}
 \end{figure}
 
 Для работы вычитателя можно взять сумматор и инвертировать второе число.
-Полученная схема изображена на рис.~\ref{fig:schema_sub}.
-Waveform тестирования доступна на рис.~\ref{fig:wave_sub}.
+Полученная схема изображена на рис.~\ref{fig:schema_-}.
+Результат тестирования и временные задержки представлены на рис.~\ref{fig:wave_-} и~\ref{fig:time_-} соответственно.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/schema_sub}
+	\includegraphics[width=\linewidth]{image/schema_-}
 	\caption{Схема двуразрядного вычитателя}
-	\label{fig:schema_sub}
+	\label{fig:schema_-}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\linewidth]{image/wave_sub}
+	\includegraphics[width=0.5\linewidth]{image/wave_-}
 	\caption{Тестирование двуразрядного вычитателя}
-	\label{fig:wave_sub}
+	\label{fig:wave_-}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\linewidth]{image/time_-}
+	\caption{Временные задержки двуразрядного вычитателя}
+	\label{fig:time_-}
 \end{figure}
 
 Было произведено тестирование работы полученного устройства на плате.
