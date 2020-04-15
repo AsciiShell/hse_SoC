@@ -19,8 +19,16 @@
 	
 	\begin{enumerate}
 		\item Сравните временную диаграмму симуляционной модели с диаграммой сигналов из документации на микросхему.
-		
-		
+		\item \begin{itemize}
+			\item Используя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 01\_badstyle. Не закрывайте окно симулятора;
+			\item Откройте документацию на АЦП ADC081S021 и сравните временную диаграмму в окне симулятора с временной диаграммой из документации;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Найдите экземпляр модуля делителя частоты и сравните его с представленным на Рисунке 9.18;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> State Machine	Viewer. Этот же результат можно получить двойным щелчком мыши на желтом прямоугольнике конечного автомата внутри окна RТL Viewer;
+			\item Сравните диаграмму конечного автомата с вариантом, разработанным на этапе	проектирования (Рисунок 9.15, Рисунок 9.17);
+			\item Откройте файл 01\_badstyle/pmod\_als.v в текстовом редакторе;
+			\item Сравните этот код с блок-схемами конечных автоматов (Рисунок 9.1, Рисунок 9.2).
+		\end{itemize}
 	\end{enumerate}
 	
 	\section{Дополнительные задания}
@@ -54,7 +62,66 @@
 	
 	$sdata(sdo)$ на обоих графиках меняет свое состояние по заднему фронту тактового импульса. При этом после первых трех тактовых импульсов наблюдаются нулевые биты, далее идут 8 информационных битов, далее идут 4 нулевых бита и после 16 тактового импульса сигнал принимает высокоимпедансное состояние.
 	
+	Разница в графиках только в длительности фронтов.	
 	
+	\subsection{Задание 2}
+
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис. \ref{fig:z15msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_msim_wvf}
+		\caption{Временная диаграмма для 01\_badstyle}
+		\label{fig:z15msimwvf}
+	\end{figure}
+
+	При сравнении диаграмм (рис. \ref{fig:9.7} и рис. \ref{fig:z15msimwvf}) видно, что микросхема ADC081S021 реализована верно. Их сравнение аналогично сравнению в задании 1.
+	
+	На рис. \ref{fig:z15rtl} RTL представление менеджера сессий для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl}
+		\caption{RTL представление менеджера сессий для 01\_badstyle}
+		\label{fig:z15rtl}
+	\end{figure}
+
+	На рис. \ref{fig:z15rtlclkdivider} RTL представление делителя частоты для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl_clk_divider}
+		\caption{RTL представление делителя частоты для 01\_badstyle}
+		\label{fig:z15rtlclkdivider}
+	\end{figure}
+
+	На рис. \ref{fig:z15auto} диаграмма состояний менеджера сессий для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/z1_5_auto}
+		\caption{Диаграмма состояний менеджера сессий для 01\_badstyle}
+		\label{fig:z15auto}
+	\end{figure}
+	
+	На рис. \ref{fig:z15autoclkdivider} диаграмма состояний делителя частоты для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/z1_5_auto_clk_divider}
+		\caption{Диаграмма состояний делителя частоты для 01\_badstyle}
+		\label{fig:z15autoclkdivider}
+	\end{figure}
+
+	Все диаграммы совпадают с диаграммами представленными в методичке.
+	
+	Данный кусок кода описывает схему переходов для менеджера сессий.
+	
+	{\small \VerbatimInput{verilog/z1_5_men_sess.v}}
+
+	Данный кусок кода описывает схему переходов для делителя частоты.
+	
+	{\small \VerbatimInput{verilog/z1_5_clk_divider.v}}
 	\section{Задания для самостоятельной работы}
 
 	\subsection{Задание 1}
