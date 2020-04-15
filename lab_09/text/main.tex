@@ -48,7 +48,7 @@
 		\begin{itemize}
 			\item Иcпользуя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 05\_optimized. Не закрывайте окно симулятора;
 			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
-			\item Сравните отображаемую схему со схемой из RТL View для примера 0З\_industrial;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 03\_industrial;
 			\item Отдельно сравните модули делителей частоты;
 			\item Откройте в текстовом редакторе файл 05\_optimized/pmod\_als.v.
 		\end{itemize}
@@ -58,8 +58,8 @@
 		\begin{itemize}
 			\item Используя шаги, описание которых приведено в Разделе 9.2.5, запустите симуляцию примера Oб\_counter. Не закрывайте окно симулятора;
 			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
-			\item Сравните отображаемую схему со схемой из RТL View для примера OЗ\_industrial;
-			\item Откройте в текстовом редакторе файл Oб\_counter/pmod\_als.v.
+			\item Сравните отображаемую схему со схемой из RТL View для примера 03\_industrial;
+			\item Откройте в текстовом редакторе файл 06\_counter/pmod\_als.v.
 		\end{itemize}
 	\end{enumerate}
 	
@@ -247,7 +247,7 @@
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.7\linewidth]{images/z5_msim_wvf}
+		\includegraphics[width=0.9\linewidth]{images/z5_msim_wvf}
 		\caption{Временная диаграмма для 04\_outdelay}
 		\label{fig:z5msimwvf}
 	\end{figure}
@@ -281,7 +281,7 @@
 		\label{fig:z6msimwvf}
 	\end{figure}
 	
-	На рис. \ref{fig:z6rtl} RTL представление менеджера сессий для 05\_optimized.
+	На рис. \ref{fig:z6rtl} представлено RTL представление менеджера сессий для 05\_optimized.
 	
 	\begin{figure}[H]
 		\centering
@@ -291,7 +291,7 @@
 	\end{figure}
 	
 	RTL представления 05\_optimized (рис. \ref{fig:z6rtl}) и  0З\_industrial (рис. \ref{fig:95}) по-прежнему отличаются одним дополнительным регистром.
-	Кроме этого появилось еще одно различие, делитель частоты для 05\_optimized (\ref{fig:z6trlclkdiv}) стал проще чем делитель частоты для 0З\_industrial (\ref{fig:z15rtlclkdivider1}).
+	Кроме этого появилось еще одно различие, делитель частоты для 05\_optimized (рис. \ref{fig:z6trlclkdiv}) стал проще чем делитель частоты для 0З\_industrial (рис. \ref{fig:z15rtlclkdivider1}).
 	
 	\begin{figure}[H]
 		\centering
@@ -302,13 +302,32 @@
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl_clk_divider}
+		\includegraphics[width=0.7\linewidth]{images/z1_5_rtl_clk_divider}
 		\caption{RTL представление делителя частоты для 0З\_industrial}
 		\label{fig:z15rtlclkdivider1}
 	\end{figure}
 	
-
-
+	\subsection{Задание 8}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис. \ref{fig:z8msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z8_msim_wvf}
+		\caption{Временная диаграмма для 06\_counter}
+		\label{fig:z8msimwvf}
+	\end{figure}
+	
+	На рис. \ref{fig:z8rtl} RTL представление менеджера сессий для 06\_counter.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z8_rtl}
+		\caption{RTL представление менеджера сессий для 06\_counter}
+		\label{fig:z8rtl}
+	\end{figure}
+		
+	RTL представления 06\_counter (рис. \ref{fig:z8rtl}) стало в разы проще, т.к. подход к проектированию конечного автомата на основе счетчика	применяется ко всему модулю взаимодействия с датчиком освещенности.
 	
 	\section{Задания для самостоятельной работы}
 
