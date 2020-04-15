@@ -18,8 +18,11 @@
 	\section{Задание}
 	
 	\begin{enumerate}
+		%1
 		\item Сравните временную диаграмму симуляционной модели с диаграммой сигналов из документации на микросхему.
-		\item \begin{itemize}
+		%2
+		\item 
+		\begin{itemize}
 			\item Используя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 01\_badstyle. Не закрывайте окно симулятора;
 			\item Откройте документацию на АЦП ADC081S021 и сравните временную диаграмму в окне симулятора с временной диаграммой из документации;
 			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
@@ -28,6 +31,26 @@
 			\item Сравните диаграмму конечного автомата с вариантом, разработанным на этапе	проектирования (Рисунок 9.15, Рисунок 9.17);
 			\item Откройте файл 01\_badstyle/pmod\_als.v в текстовом редакторе;
 			\item Сравните этот код с блок-схемами конечных автоматов (Рисунок 9.1, Рисунок 9.2).
+		\end{itemize}
+	
+	
+		%5	
+		\item 
+		\begin{itemize}
+			\item Используя шаги, описание которых дано в Разделе 9.2.5, запустите симуляцию примера 04\_outdelay. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 0З\_industrial;
+			\item Откройте в текстовом редакторе файл 04\_outdelay/pmod\_als.v.
+		\end{itemize}
+
+		
+		%8	
+		\item 
+		\begin{itemize}
+			\item Используя шаги, описание которых приведено в Разделе 9.2.5, запустите симуляцию примера Oб\_counter. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера OЗ\_industrial;
+			\item Откройте в текстовом редакторе файл Oб\_counter/pmod\_als.v.
 		\end{itemize}
 	\end{enumerate}
 	
@@ -122,6 +145,39 @@
 	Данный кусок кода описывает схему переходов для делителя частоты.
 	
 	{\small \VerbatimInput{verilog/z1_5_clk_divider.v}}
+	
+	\subsection{Задание 5}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис. \ref{fig:z5msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z5_msim_wvf}
+		\caption{Временная диаграмма для 04\_outdelay}
+		\label{fig:z5msimwvf}
+	\end{figure}
+	
+	На рис. \ref{fig:z15rtl} RTL представление менеджера сессий для 04\_outdelay.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z5_rtl}
+		\caption{RTL представление менеджера сессий для 04\_outdelay}
+		\label{fig:z5rtl}
+	\end{figure}
+	
+	
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/9_5}
+	\caption{}
+	\label{fig:95}
+\end{figure}
+
+
+	
+	
 	\section{Задания для самостоятельной работы}
 
 	\subsection{Задание 1}
