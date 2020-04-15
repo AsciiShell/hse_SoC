@@ -54,6 +54,54 @@
 	
 	$sdata(sdo)$ на обоих графиках меняет свое состояние по заднему фронту тактового импульса. При этом после первых трех тактовых импульсов наблюдаются нулевые биты, далее идут 8 информационных битов, далее идут 4 нулевых бита и после 16 тактового импульса сигнал принимает высокоимпедансное состояние.
 	
+	\subsection{Задание 3}
+	
+	Проверить компромиссный стиль кодирования.
+	
+	Была выполнена симуляция схемы (рис.~\ref{fig:9_3_wave}), далее код был скомпилирован (рис.~\ref{fig:9_3_compilation}).
+	Было выполнено RTL моделирование (рис.~\ref{fig:9_3_rtl}~и~\ref{fig:9_3_rtl2}), а так же построена диаграмма конечного автомата (рис.~\ref{fig:9_3_state}).
+	% TODO сравнить RTL
+	
+	Диаграмма конечного автомата совпадает с примером диаграммы состояний менеджера сессий.
+	При анализе исходного кода можно выделить блок, отвечающий за логику переходов, за вычисление следующего состояния, вычисления следующего состояния.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_wave}
+		\caption{Результат симуляции компромиссного стиля кодирования}
+		\label{fig:9_3_wave}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/9_3_compilation}
+		\caption{Результат компиляции компромиссного стиля кодирования}
+		\label{fig:9_3_compilation}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_rtl}
+		\caption{RTL представление компромиссного стиля кодирования}
+		\label{fig:9_3_rtl}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_rtl2}
+		\caption{Подробное RTL представление компромиссного стиля кодирования}
+		\label{fig:9_3_rtl2}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_state}
+		\caption{State machine view компромиссного стиля кодирования}
+		\label{fig:9_3_state}
+	\end{figure}
+
+	\subsection{Задание 4}
+	
 	
 	\section{Задания для самостоятельной работы}
 
