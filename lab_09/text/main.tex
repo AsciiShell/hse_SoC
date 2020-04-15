@@ -43,7 +43,16 @@
 			\item Откройте в текстовом редакторе файл 04\_outdelay/pmod\_als.v.
 		\end{itemize}
 
-		
+		%6
+		\item 
+		\begin{itemize}
+			\item Иcпользуя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 05\_optimized. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 0З\_industrial;
+			\item Отдельно сравните модули делителей частоты;
+			\item Откройте в текстовом редакторе файл 05\_optimized/pmod\_als.v.
+		\end{itemize}
+	
 		%8	
 		\item 
 		\begin{itemize}
@@ -157,7 +166,7 @@
 		\label{fig:z5msimwvf}
 	\end{figure}
 	
-	На рис. \ref{fig:z15rtl} RTL представление менеджера сессий для 04\_outdelay.
+	На рис. \ref{fig:z5rtl} RTL представление менеджера сессий для 04\_outdelay.
 	
 	\begin{figure}[H]
 		\centering
@@ -165,16 +174,54 @@
 		\caption{RTL представление менеджера сессий для 04\_outdelay}
 		\label{fig:z5rtl}
 	\end{figure}
-	
-	
-	
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\linewidth]{images/9_5}
-	\caption{}
-	\label{fig:95}
-\end{figure}
 
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_5}
+		\caption{RTL представление менеджера сессий для 0З\_industrial}
+		\label{fig:95}
+	\end{figure}
+	
+	RTL представления 04\_outdelay (рис. \ref{fig:z5rtl}) и  0З\_industrial (рис. \ref{fig:95}) похожи, но 04\_outdelay имеет на выходе дополнительный регистр.
+	
+	\subsection{Задание 6}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис. \ref{fig:z6msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z6_msim_wvf}
+		\caption{Временная диаграмма для 05\_optimized}
+		\label{fig:z6msimwvf}
+	\end{figure}
+	
+	На рис. \ref{fig:z6rtl} RTL представление менеджера сессий для 05\_optimized.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z6_rtl}
+		\caption{RTL представление менеджера сессий для 05\_optimized}
+		\label{fig:z6rtl}
+	\end{figure}
+	
+	RTL представления 05\_optimized (рис. \ref{fig:z6rtl}) и  0З\_industrial (рис. \ref{fig:95}) по-прежнему отличаются одним дополнительным регистром.
+	Кроме этого появилось еще одно различие, делитель частоты для 05\_optimized (\ref{fig:z6trlclkdiv}) стал проще чем делитель частоты для 0З\_industrial (\ref{fig:z15rtlclkdivider1}).
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z6_trl_clk_div}
+		\caption{RTL представление делителя частоты для 05\_optimized}
+		\label{fig:z6trlclkdiv}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl_clk_divider}
+		\caption{RTL представление делителя частоты для 0З\_industrial}
+		\label{fig:z15rtlclkdivider1}
+	\end{figure}
+	
+	
 
 	
 	
