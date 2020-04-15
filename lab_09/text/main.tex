@@ -102,6 +102,44 @@
 
 	\subsection{Задание 4}
 	
+	Проверить стиль на примитивах.
+	
+	Была выполнена симуляция схемы (рис.~\ref{fig:9_4_wave}), далее код был скомпилирован (рис.~\ref{fig:9_4_compilation}).
+	Было выполнено RTL моделирование (рис.~\ref{fig:9_4_rtl}~и~\ref{fig:9_4_rtl2}), а так же построена диаграмма конечного автомата (рис.~\ref{fig:9_4_state}).
+	Общий вид RTL не отличается от рис.~\ref{fig:9_3_rtl}, однако при подробном анализе можно заметить, что в данном варианте схема состоит из множества малых частей, а так же стала больше при полном отображении всех компонентов.
+	Кроме того, в данном варианте компилятор не распознает конечный автомат, он не отображается ни в RTL, ни в State machine view.
+	
+	Особенность данной схемы в том, что каждый отдельный элемент является отдельным блоком.
+	Это приводит к упрощению схемы для разработчика, а так же снижает затраты на отладку и тестирование компонентов. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_wave}
+		\caption{Результат симуляции стиля на примитивах}
+		\label{fig:9_4_wave}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/9_4_compilation}
+		\caption{Результат компиляции стиля на примитивах}
+		\label{fig:9_4_compilation}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_rtl}
+		\caption{RTL представление стиля на примитивах}
+		\label{fig:9_4_rtl}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_rtl2}
+		\caption{Подробное RTL представление стиля на примитивах}
+		\label{fig:9_4_rtl2}
+	\end{figure}
+
 	
 	\section{Задания для самостоятельной работы}
 
