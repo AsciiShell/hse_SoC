@@ -373,11 +373,20 @@
 	
 	\subsection{Задание 9}
 	
-	Отследим отследите сигналы sck, cs, sampleBit и valueDone на рис. \ref{fig:z8msimwvf}
+	Отследим отследите сигналы sck, cs, sampleBit и valueDone на рис. \ref{fig:z8msimwvf}.
 	
-	\begin{itemize}
-		\item sck - 
-	\end{itemize}
+	\begin{enumerate}
+		
+		\item sck - тактовый сигнал с пониженной частотой, объявлено как 3 бит в счетчике: $assign sck = cnt [3]$;
+		
+		\item cs - chip select, сигнал выбора микросхемы, инвертированный;
+		
+		\item sampleBit - старый тактовый сигал с счетчиком;
+		
+		\item valueDone - сигнал окончания передачи информационной части.
+	\end{enumerate}
+
+	По поводу ресурсозатратности было в предыдущем задании.
 	
 	\section{Задания для самостоятельной работы}
 
