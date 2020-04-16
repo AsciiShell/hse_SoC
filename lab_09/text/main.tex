@@ -52,7 +52,11 @@
 			\item Отдельно сравните модули делителей частоты;
 			\item Откройте в текстовом редакторе файл 05\_optimized/pmod\_als.v.
 		\end{itemize}
-	
+		
+		%7
+		\item Сравните результаты синтеза делителей частоты при различных подходах к проектированию ( Рисунок 9.18, Рисунок 9.26);
+		
+		
 		%8	
 		\item 
 		\begin{itemize}
@@ -61,6 +65,9 @@
 			\item Сравните отображаемую схему со схемой из RТL View для примера 03\_industrial;
 			\item Откройте в текстовом редакторе файл 06\_counter/pmod\_als.v.
 		\end{itemize}
+	
+		%9
+		\item Проанализируйте Листинг 9.12, отследите сигналы sck, cs, sampleBit и valueDone в окне симулятора и на временной диаграмме ( Рисунок 9.28). Особое внимание уделите тому, как они формируются. Обоснуйте, как оптимизация автомата сказалась на затратах ресурсов чипа и проиллюстрируйте это отчетами компилятора после сборки проекта.
 	\end{enumerate}
 	
 	\section{Дополнительные задания}
@@ -307,13 +314,48 @@
 		\label{fig:z15rtlclkdivider1}
 	\end{figure}
 	
+	\subsection{Задание 7}
+	
+	\begin{figure}[H]
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z1_5_compilation}} 01\_badstyle \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{9_3_compilation}} \\02\_compromise
+		\end{minipage}
+		\vfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{9_4_compilation}} 03\_industrial \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z5_compilation}} 04\_outdelay \\
+		\end{minipage}
+		\vfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z6__compilation}} 05\_optimized \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z8__compilation}} 06\_counter \\
+		\end{minipage}
+		\caption{Результаты компиляций всех реализаций}
+		\label{fig:compilations}
+	\end{figure}
+	
+	На рис. \ref{fig:compilations} представлены результаты компиляции всех реализаций. Самым экономичным является  последняя реализация с двоичным счетчиком (40 регистров и 60 логических элементов).
+	
+	Самой неэкономичной реализацией оказалась первая версия (53 регистра и 94 логических элемента).  
+	
+	
 	\subsection{Задание 8}
 	
 	После запуска симуляции в modelSim была получена диаграмма, представленная на рис. \ref{fig:z8msimwvf}.
 	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/z8_msim_wvf}
+		\includegraphics[width=0.9\linewidth]{images/z9}
 		\caption{Временная диаграмма для 06\_counter}
 		\label{fig:z8msimwvf}
 	\end{figure}
@@ -328,6 +370,14 @@
 	\end{figure}
 		
 	RTL представления 06\_counter (рис. \ref{fig:z8rtl}) стало в разы проще, т.к. подход к проектированию конечного автомата на основе счетчика	применяется ко всему модулю взаимодействия с датчиком освещенности.
+	
+	\subsection{Задание 9}
+	
+	Отследим отследите сигналы sck, cs, sampleBit и valueDone на рис. \ref{fig:z8msimwvf}
+	
+	\begin{itemize}
+		\item sck - 
+	\end{itemize}
 	
 	\section{Задания для самостоятельной работы}
 
