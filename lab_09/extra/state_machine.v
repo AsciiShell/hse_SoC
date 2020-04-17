@@ -31,16 +31,17 @@ always @ (posedge sck or negedge rst_n)
 	else if (enable)
 		state <= next_state;
 		
-integer counter = 0;
+reg [3:0] counter;
 
 // Next state logic
 
-always @*
+always @ (posedge sck)
 	case (state)
 	S0:
 		begin
-			shape <= 0;
-			if (counter == 5) begin
+			
+			shape = 0;
+			if (counter == 3) begin
 				counter = 0;
 				next_state = A1;
 			end else 
@@ -52,33 +53,39 @@ always @*
 		
 	A1:
 		begin
-			shape <= 1;
-			counter = 0;
-			next_state = A2;
+			shape = 1;
+			if (counter == 3) begin
+				counter = 0;
+				next_state = A2;
+			end else 
+			begin
+				counter = counter + 1;
+				next_state = A1;
+			end
 		end
 	A2:
 		begin
-			shape <= 0;
+			shape = 0;
 			counter = 0;
-			next_state = A2;
+			next_state = A3;
 		end
 		
 	A3:
 		begin
-			shape <= 1;
-			if (counter == 4) begin
+			shape = 1;
+			if (counter == 5) begin
 				counter = 0;
-				next_state = A1;
+				next_state = S0;
 			end else 
 			begin
 				counter = counter + 1;
-				next_state = S0;
+				next_state = A3;
 			end
 		end
 	
 	default: begin
 		next_state = S0;
-		shape <= 0;
+		shape = 0;
 		counter = 0;
 		end
 endcase
