@@ -8,7 +8,8 @@ module state_machine
 	input enable,
 	output result,
 	output sck,
-	output reg shape
+	output reg shape,
+	output reg [3:0] counter
 );
 
 wire [ CNTSIZE - 1:0] cnt;
@@ -31,7 +32,7 @@ always @ (posedge sck or negedge rst_n)
 	else if (enable)
 		state <= next_state;
 		
-reg [3:0] counter;
+//reg [3:0] counter;
 
 // Next state logic
 
@@ -41,26 +42,26 @@ always @ (posedge sck)
 		begin
 			
 			shape = 0;
-			if (counter == 3) begin
+			if (counter == 4'b0011) begin
 				counter = 0;
 				next_state = A1;
 			end else 
 			begin
 				counter = counter + 1;
-				next_state = S0;
+//				next_state = S0;
 			end
 		end
 		
 	A1:
 		begin
 			shape = 1;
-			if (counter == 3) begin
+			if (counter == 4'b0001) begin
 				counter = 0;
 				next_state = A2;
 			end else 
 			begin
 				counter = counter + 1;
-				next_state = A1;
+//				next_state = A1;
 			end
 		end
 	A2:
@@ -73,13 +74,13 @@ always @ (posedge sck)
 	A3:
 		begin
 			shape = 1;
-			if (counter == 5) begin
+			if (counter == 4'b011) begin
 				counter = 0;
 				next_state = S0;
 			end else 
 			begin
 				counter = counter + 1;
-				next_state = A3;
+//				next_state = A3;
 			end
 		end
 	
