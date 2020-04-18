@@ -353,8 +353,8 @@ refer to the applicable agreement for further details.
 )
 (symbol
 	(rect 184 56 360 168)
-	(text "lpm_mult_instance" (rect 23 0 151 16)(font "Arial" (font_size 10)))
-	(text "inst_mult" (rect 8 96 52 113)(font "Intel Clear" ))
+	(text "mult" (rect 75 0 104 16)(font "Arial" (font_size 10)))
+	(text "inst3" (rect 8 96 30 113)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -404,8 +404,8 @@ refer to the applicable agreement for further details.
 )
 (symbol
 	(rect 384 192 640 328)
-	(text "ram_instance" (rect 79 0 171 16)(font "Arial" (font_size 10)))
-	(text "inst_ram" (rect 8 120 49 137)(font "Intel Clear" ))
+	(text "ram" (rect 114 0 139 16)(font "Arial" (font_size 10)))
+	(text "inst7" (rect 8 120 30 137)(font "Intel Clear" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -605,19 +605,18 @@ refer to the applicable agreement for further details.
 )
 (connector
 	(pt 384 224)
-	(pt 368 224)
+	(pt 376 224)
 	(bus)
 )
 (connector
-	(pt 368 224)
-	(pt 368 128)
+	(pt 376 224)
+	(pt 376 128)
 	(bus)
 )
 (connector
-	(pt 368 128)
+	(pt 376 128)
 	(pt 360 128)
 	(bus)
 )
 (junction (pt 168 88))
 (junction (pt 168 304))
-(text "Multiplier" (rect 232 104 306 122)(font "Arial" (font_size 12)))
