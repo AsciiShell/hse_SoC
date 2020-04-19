@@ -1,0 +1,51 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Создать конвейерный умножитель.
+Изменить схему устройства, добавив собственный блок памяти и арифметический блок.
+
+\section{Выполнение работы}
+
+Создадим проект, в качестве device выберем 5CGXFC9C6F23C7 семейства Cyclone V.
+Данное изделие поддерживает инициализацию памяти, хотя, это не обязательно в данной работе.
+Создадим необходимые компоненты согласно инструкции, добавим эти модули на схему устройства (рис.~\ref{fig:z1_schema}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_schema}
+	\caption{Схема параллельного умножителя}
+	\label{fig:z1_schema}
+\end{figure}
+
+
+
+\section{Выводы по работе}
+
+В ходе работы был получен блок параллельного умножителя.
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа
