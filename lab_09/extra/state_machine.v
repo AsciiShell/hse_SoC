@@ -18,9 +18,9 @@ register #(.SIZE(CNTSIZE)) r_counter(clk, rst_n, cntNext, cnt);
 assign sck = cnt [CNTSIZE-1];
 
 parameter [4:0] S0 = 0, A1 = 1, A2 = 2, A3 = 3, A4 = 4, A5 = 5,
-					A6 = 6, A7 = 7, A8 = 8, A9 = 9, A10 = 10, A11 = 11,
-					A12 =12, A13 = 13, A14 = 14, A15 = 15, A16 = 16, A17 = 17,
-					A18 = 18, A19 = 19;
+			A6 = 6, A7 = 7, A8 = 8, A9 = 9, A10 = 10, A11 = 11,
+			A12 =12, A13 = 13, A14 = 14, A15 = 15, A16 = 16, A17 = 17,
+			A18 = 18, A19 = 19;
 
 reg [4:0] state, next_state, next_out;
 
@@ -56,7 +56,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = S0;
 			end
 		end
 		
@@ -69,7 +68,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A1;
 			end
 		end
 	A2:
@@ -81,7 +79,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -94,7 +91,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -107,7 +103,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -120,7 +115,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 	A6:
@@ -132,7 +126,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -145,7 +138,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -158,7 +150,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -171,7 +162,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -184,7 +174,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -197,7 +186,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -211,7 +199,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = S0;
 			end
 		end
 		
@@ -224,7 +211,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A1;
 			end
 		end
 	A14:
@@ -236,7 +222,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -249,7 +234,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -262,7 +246,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 		
@@ -275,7 +258,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = A3;
 			end
 		end
 	A18:
@@ -288,7 +270,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = S0;
 			end
 		end
 	A19:
@@ -301,7 +282,6 @@ always @ (posedge sck)
 			end else 
 			begin
 				counter = counter + 1;
-//				next_state = S0;
 			end
 		end
 	
