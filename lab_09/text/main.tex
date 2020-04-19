@@ -1,0 +1,504 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+	\input{data/title.tex}
+	\tableofcontents
+	\pagebreak
+	\section{Задание}
+	
+	\begin{enumerate}
+		%1
+		\item Сравните временную диаграмму симуляционной модели с диаграммой сигналов из документации на микросхему.
+		%2
+		\item 
+		\begin{itemize}
+			\item Используя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 01\_badstyle. Не закрывайте окно симулятора;
+			\item Откройте документацию на АЦП ADC081S021 и сравните временную диаграмму в окне симулятора с временной диаграммой из документации;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Найдите экземпляр модуля делителя частоты и сравните его с представленным на Рисунке 9.18;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> State Machine	Viewer. Этот же результат можно получить двойным щелчком мыши на желтом прямоугольнике конечного автомата внутри окна RТL Viewer;
+			\item Сравните диаграмму конечного автомата с вариантом, разработанным на этапе	проектирования (Рисунок 9.15, Рисунок 9.17);
+			\item Откройте файл 01\_badstyle/pmod\_als.v в текстовом редакторе;
+			\item Сравните этот код с блок-схемами конечных автоматов (Рисунок 9.1, Рисунок 9.2).
+		\end{itemize}
+	
+	
+		%5	
+		\item 
+		\begin{itemize}
+			\item Используя шаги, описание которых дано в Разделе 9.2.5, запустите симуляцию примера 04\_outdelay. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 0З\_industrial;
+			\item Откройте в текстовом редакторе файл 04\_outdelay/pmod\_als.v.
+		\end{itemize}
+
+		%6
+		\item 
+		\begin{itemize}
+			\item Иcпользуя шаги, описанные в Разделе 9.2.5, запустите симуляцию примера 05\_optimized. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 03\_industrial;
+			\item Отдельно сравните модули делителей частоты;
+			\item Откройте в текстовом редакторе файл 05\_optimized/pmod\_als.v.
+		\end{itemize}
+		
+		%7
+		\item Сравните результаты синтеза делителей частоты при различных подходах к проектированию ( Рисунок 9.18, Рисунок 9.26);
+		
+		
+		%8	
+		\item 
+		\begin{itemize}
+			\item Используя шаги, описание которых приведено в Разделе 9.2.5, запустите симуляцию примера Oб\_counter. Не закрывайте окно симулятора;
+			\item В среде Quartus Prime откройте пункт меню Tools -> Netlist Viewers -> RTL Viewer;
+			\item Сравните отображаемую схему со схемой из RТL View для примера 03\_industrial;
+			\item Откройте в текстовом редакторе файл 06\_counter/pmod\_als.v.
+		\end{itemize}
+	
+		%9
+		\item Проанализируйте Листинг 9.12, отследите сигналы sck, cs, sampleBit и valueDone в окне симулятора и на временной диаграмме ( Рисунок 9.28). Особое внимание уделите тому, как они формируются. Обоснуйте, как оптимизация автомата сказалась на затратах ресурсов чипа и проиллюстрируйте это отчетами компилятора после сборки проекта.
+	\end{enumerate}
+	
+	\section{Дополнительные задания}
+	
+	\subsection{Задание 1}
+	
+	Сравните временную диаграмму симуляционной модели с	диаграммой сигналов из документации на микросхему. 		
+	
+	На рис.~\ref{fig:9.7} приведена временная диаграмма из документации к микросхеме ADC081S021, на рис.~\ref{fig:9.11} диаграмма симуляционной модели микросхемы.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_7}
+		\caption{ADC081S021 Временная диаграмма обмена данными из документации}
+		\label{fig:9.7}
+	\end{figure}
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_11}
+		\caption{Временная диаграмма симуляционной модели микросхемы ADC081S021}
+		\label{fig:9.11}
+	\end{figure}
+
+	На обеих временных диаграммах изображены 3 временные характеристики: $cs$ - chip select, сигнал выбора микросхемы, $sclk(sck)$ - тактовый импульс, $sdata(sdo)$ - slave data out, данные, получаемые из микросхемы.
+	
+	$sclk(sck)$ мало чем может отличаться, т.к. это тактовый импульс.
+	
+	$cs$ на обоих графиках установлен в значение логического нуля на протяжении 16 импульсов.
+	
+	$sdata(sdo)$ на обоих графиках меняет свое состояние по заднему фронту тактового импульса. При этом после первых трех тактовых импульсов наблюдаются нулевые биты, далее идут 8 информационных битов, далее идут 4 нулевых бита и после 16 тактового импульса сигнал принимает высокоимпедансное состояние.
+	
+	Разница в графиках только в длительности фронтов.	
+		
+	\subsection{Задание 2}
+
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис.~\ref{fig:z15msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_msim_wvf}
+		\caption{Временная диаграмма для 01\_badstyle}
+		\label{fig:z15msimwvf}
+	\end{figure}
+
+	При сравнении диаграмм (рис.~\ref{fig:9.7} и рис.~\ref{fig:z15msimwvf}) видно, что микросхема ADC081S021 реализована верно. Их сравнение аналогично сравнению в задании 1.
+	
+	На рис.~\ref{fig:z15rtl} RTL представление менеджера сессий для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl}
+		\caption{RTL представление менеджера сессий для 01\_badstyle}
+		\label{fig:z15rtl}
+	\end{figure}
+
+	На рис.~\ref{fig:z15rtlclkdivider} RTL представление делителя частоты для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z1_5_rtl_clk_divider}
+		\caption{RTL представление делителя частоты для 01\_badstyle}
+		\label{fig:z15rtlclkdivider}
+	\end{figure}
+
+	На рис.~\ref{fig:z15auto} диаграмма состояний менеджера сессий для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/z1_5_auto}
+		\caption{Диаграмма состояний менеджера сессий для 01\_badstyle}
+		\label{fig:z15auto}
+	\end{figure}
+	
+	На рис.~\ref{fig:z15autoclkdivider} диаграмма состояний делителя частоты для 01\_badstyle.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/z1_5_auto_clk_divider}
+		\caption{Диаграмма состояний делителя частоты для 01\_badstyle}
+		\label{fig:z15autoclkdivider}
+	\end{figure}
+
+	Все диаграммы совпадают с диаграммами представленными в методичке.
+	
+	Данный фрагмент кода описывает схему переходов для менеджера сессий.
+	
+	{\small \VerbatimInput{verilog/z1_5_men_sess.v}}
+
+	Данный фрагмент кода описывает схему переходов для делителя частоты.
+	
+	{\small \VerbatimInput{verilog/z1_5_clk_divider.v}}
+	
+	\subsection{Задание 3}
+	
+	Проверить компромиссный стиль кодирования.
+	
+	Была выполнена симуляция схемы (рис.~\ref{fig:9_3_wave}), далее код был скомпилирован (рис.~\ref{fig:9_3_compilation}).
+	Было выполнено RTL моделирование (рис.~\ref{fig:9_3_rtl}~и~\ref{fig:9_3_rtl2}), а так же построена диаграмма конечного автомата (рис.~\ref{fig:9_3_state}).
+	RTL представление усложнилось, по сравнению с рис.~\ref{fig:z15rtl}.
+	
+	Диаграмма конечного автомата совпадает с примером диаграммы состояний менеджера сессий.
+	При анализе исходного кода можно выделить блок, отвечающий за логику переходов, за вычисление следующего состояния, вычисления следующего состояния.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_wave}
+		\caption{Результат симуляции компромиссного стиля кодирования}
+		\label{fig:9_3_wave}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/9_3_compilation}
+		\caption{Результат компиляции компромиссного стиля кодирования}
+		\label{fig:9_3_compilation}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_rtl}
+		\caption{RTL представление компромиссного стиля кодирования}
+		\label{fig:9_3_rtl}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_rtl2}
+		\caption{Подробное RTL представление компромиссного стиля кодирования}
+		\label{fig:9_3_rtl2}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_3_state}
+		\caption{State machine view компромиссного стиля кодирования}
+		\label{fig:9_3_state}
+	\end{figure}
+
+	\subsection{Задание 4}
+
+	Проверить стиль на примитивах.
+	
+	Была выполнена симуляция схемы (рис.~\ref{fig:9_4_wave}), далее код был скомпилирован (рис.~\ref{fig:9_4_compilation}).
+	Было выполнено RTL моделирование (рис.~\ref{fig:9_4_rtl}~и~\ref{fig:9_4_rtl2}), конечный автомат в данном примере не распознался.
+	Общий вид RTL не отличается от рис.~\ref{fig:9_3_rtl}, однако при подробном анализе можно заметить, что в данном варианте схема состоит из множества малых частей, а так же стала больше при полном отображении всех компонентов.
+	Кроме того, в данном варианте компилятор не распознает конечный автомат, он не отображается ни в RTL, ни в State machine view.
+	
+	Особенность данной схемы в том, что каждый отдельный элемент является отдельным блоком.
+	Это приводит к упрощению схемы для разработчика, а так же снижает затраты на отладку и тестирование компонентов. 
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_wave}
+		\caption{Результат симуляции стиля на примитивах}
+		\label{fig:9_4_wave}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/9_4_compilation}
+		\caption{Результат компиляции стиля на примитивах}
+		\label{fig:9_4_compilation}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_rtl}
+		\caption{RTL представление стиля на примитивах}
+		\label{fig:9_4_rtl}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_4_rtl2}
+		\caption{Подробное RTL представление стиля на примитивах}
+		\label{fig:9_4_rtl2}
+	\end{figure}
+
+	\subsection{Задание 5}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис.~\ref{fig:z5msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z5_msim_wvf}
+		\caption{Временная диаграмма для 04\_outdelay}
+		\label{fig:z5msimwvf}
+	\end{figure}
+	
+	На рис.~\ref{fig:z5rtl} RTL представление менеджера сессий для 04\_outdelay.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z5_rtl}
+		\caption{RTL представление менеджера сессий для 04\_outdelay}
+		\label{fig:z5rtl}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/9_5}
+		\caption{RTL представление менеджера сессий для 0З\_industrial}
+		\label{fig:95}
+	\end{figure}
+	
+	RTL представления 04\_outdelay (рис.~\ref{fig:z5rtl}) и  0З\_industrial (рис.~\ref{fig:95}) похожи, но 04\_outdelay имеет на выходе дополнительный регистр.
+	
+	\subsection{Задание 6}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис.~\ref{fig:z6msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z6_msim_wvf}
+		\caption{Временная диаграмма для 05\_optimized}
+		\label{fig:z6msimwvf}
+	\end{figure}
+	
+	На рис.~\ref{fig:z6rtl} представлено RTL представление менеджера сессий для 05\_optimized.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z6_rtl}
+		\caption{RTL представление менеджера сессий для 05\_optimized}
+		\label{fig:z6rtl}
+	\end{figure}
+	
+	RTL представления 05\_optimized (рис.~\ref{fig:z6rtl}) и  0З\_industrial (рис.~\ref{fig:95}) по-прежнему отличаются одним дополнительным регистром.
+	Кроме этого появилось еще одно различие, делитель частоты для 05\_optimized (рис.~\ref{fig:z6trlclkdiv}) стал проще чем делитель частоты для 0З\_industrial (рис.~\ref{fig:z15rtlclkdivider1}).
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z6_trl_clk_div}
+		\caption{RTL представление делителя частоты для 05\_optimized}
+		\label{fig:z6trlclkdiv}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/z1_5_rtl_clk_divider}
+		\caption{RTL представление делителя частоты для 0З\_industrial}
+		\label{fig:z15rtlclkdivider1}
+	\end{figure}
+	
+	\subsection{Задание 7}
+	
+	\begin{figure}[H]
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z1_5_compilation}} 01\_badstyle \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{9_3_compilation}} \\02\_compromise
+		\end{minipage}
+		\vfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{9_4_compilation}} 03\_industrial \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z5_compilation}} 04\_outdelay \\
+		\end{minipage}
+		\vfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z6__compilation}} 05\_optimized \\
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.4\linewidth}
+			\center{\includegraphics[width=1\linewidth]{z8__compilation}} 06\_counter \\
+		\end{minipage}
+		\caption{Результаты компиляций всех реализаций}
+		\label{fig:compilations}
+	\end{figure}
+	
+	На рис. \ref{fig:compilations} представлены результаты компиляции всех реализаций. Самым экономичным является  последняя реализация с двоичным счетчиком (40 регистров и 60 логических элементов).
+	
+	Самой неэкономичной реализацией оказалась первая версия (53 регистра и 94 логических элемента).  
+	
+	
+	\subsection{Задание 8}
+	
+	После запуска симуляции в modelSim была получена диаграмма, представленная на рис.~\ref{fig:z8msimwvf}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z9}
+		\caption{Временная диаграмма для 06\_counter}
+		\label{fig:z8msimwvf}
+	\end{figure}
+	
+	На рис.~\ref{fig:z8rtl} RTL представление менеджера сессий для 06\_counter.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/z8_rtl}
+		\caption{RTL представление менеджера сессий для 06\_counter}
+		\label{fig:z8rtl}
+	\end{figure}
+		
+	RTL представления 06\_counter (рис.~\ref{fig:z8rtl}) стало в разы проще, т.к. подход к проектированию конечного автомата на основе счетчика	применяется ко всему модулю взаимодействия с датчиком освещенности.
+	
+	\subsection{Задание 9}
+	
+	Отследим отследите сигналы sck, cs, sampleBit и valueDone на рис. \ref{fig:z8msimwvf}.
+	
+	\begin{enumerate}
+		
+		\item sck - тактовый сигнал с пониженной частотой, объявлено как 3 бит в счетчике: $assign sck = cnt [3]$;
+		
+		\item cs - chip select, сигнал выбора микросхемы, инвертированный;
+		
+		\item sampleBit - старый тактовый сигал с счетчиком;
+		
+		\item valueDone - сигнал окончания передачи информационной части.
+	\end{enumerate}
+
+	По поводу ресурсозатратности было в предыдущем задании.
+	
+	\section{Задания для самостоятельной работы}
+
+	Реализуйте передатчик сигналов Морзе. В качестве входного устройства должен выступать клавиатурный модуль, в качестве выходного - пьезоизлучатель.
+	
+	Так как платы с периферийным оборудованием нет, ограничимся симуляцией (рис. \ref{fig:extraimg}). 
+	С клавиатурного модуля приходит код необходимого символа, он преобразуется в сигналы азбуки морзе ($shape$), данный модуль работает с помощью конечных автоматов на тактовой частоте ($sck$).
+	Далее под форму этих сигналов преобразуется сигнал на частоте 3кГц ($result$). 
+	Этот сигнал и уходит на пьезоизлучатель.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/extra_img}
+		\caption{Симуляция задания для самостоятельной работы}
+		\label{fig:extraimg}
+	\end{figure}
+	
+	Исходный код передатчика:.
+	
+	{\small \VerbatimInput{../extra/state_machine.v}}
+
+	\section{Контрольные вопросы}
+	
+	Подчезерцев Алексей:
+	
+	\begin{enumerate}
+		\item Нарисуйте диаграмму состояний для детектора последовательности 1011. 
+		Текущее значение бита - вход автомата; выход автомата должен принять значение 1, если на его входе будет обнаружена искомая последовательность.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_1}
+			\caption{Диаграмма автомата}
+			\label{fig:q_1}
+		\end{figure}
+	
+		\item Изобразите блок-схему автомата Мура с использованием символов комбинационной логики («облако»), регистра и соединительных линий.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_2}
+			\caption{Схема автомата Мура}
+			\label{fig:q_2}
+		\end{figure}
+	
+		\item Нарисуйте диаграмму состояний для кодового замка, ключевая последовательность	которого - 3 символа. 
+		Входом могут быть : <<не нажата ни одна из кнопок>> либо код нажатой кнопки. 
+		Выхода - <<открыто>> или <<закрыто>>. 
+		Предусмотрите наличие таймера, определяющего длительность нахождения в состоянии <<открыто>>.
+		
+		Ложные пути требуются для защиты от перебора.
+		В противном случае криптографическая сложность падает с экспоненциальной до линейной.
+		Счетчик состояний в ожидании реализует таймер. 
+		После некоторого числа повторений необходимо закрыть дверь.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_3}
+			\caption{Схема автомата для замка}
+			\label{fig:q_3}
+		\end{figure}
+	\end{enumerate}
+	
+	Солодянкин Андрей:
+
+	\begin{enumerate}
+		\item Изобразите блок-схему автомата Мура с выходным буфером с использованием символов комбинационной логики («облако»), регистра и соединительных линий.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_4}
+			\caption{Схема автомата Мура}
+			\label{fig:q_4}
+		\end{figure}
+	
+		\item Изобразите блок-схему автомата, построенного на базе счетчика с выходным
+		буфером с использованием символов комбинационной логики («облако»), регистра и соединительных линий. 
+		К какому типу он принадлежит: Мура или Мили? Можно ли изобразить два автомата, построенных на счетчиках и относящихся к различным	типам?
+		
+		В данном примере (рис.~\ref{fig:q_5}) изображена схема автомата Мура, основанная на счетчике.
+		Для преобразования в автомат Мили необходимо добавить зависимость от входного сигнала в его комбинационную выходную логику.
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_5}
+			\caption{Схема автомата Мура на счетчике}
+			\label{fig:q_5}
+		\end{figure}
+	
+		\item Изобразите блок-схему автомата Мили с выходным буфером с использованием символов комбинационной логики («облако»), регистра и соединительных линий.
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\linewidth]{images/q_6}
+			\caption{Схема автомата Мура}
+			\label{fig:q_6}
+		\end{figure}
+	\end{enumerate}
+	
+	\section{Выводы по работе}
+	
+	В ходе работы получен опыт проектирования схем в программе Quartus с помощью языка Verilog.
+	Полученное устройство было протестировано с помощью бенчтестов в программе Quartus Simulation Waveform editor.
+	В процессе работы были смоделированы устройства для работы с периферийными устройствами.
+	В процессе был получен опыт работы с платой DE10-Lite, на которой проверялась работоспособность полученного устройства.
+	
+	\newpage 
+	\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+	\centering 
+	\begin{thebibliography}{9} 
+		\addcontentsline{toc}{section}{\refname} 
+		\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+		\bibitem{citekey} Khor W. Y. et al. Evaluation of FPGA Based QSPI Flash Access Using Partial Reconfiguration //2019 7th International Conference on Smart Computing \& Communications (ICSCC). – IEEE, 2019. – С. 1-5
+	\end{thebibliography}
+	
+\end{document} % конец документа
