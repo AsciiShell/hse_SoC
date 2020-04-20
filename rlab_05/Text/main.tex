@@ -1,0 +1,176 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Создать конвейерный умножитель.
+Изменить схему устройства, добавив собственный блок памяти и арифметический блок.
+
+\section{Выполнение работы}
+
+Создадим проект, в качестве device выберем 5CGXFC9C6F23C7 семейства Cyclone V.
+Данное изделие поддерживает инициализацию памяти, хотя, это не обязательно в данной работе.
+Создадим необходимые компоненты согласно инструкции, добавим эти модули на схему устройства (рис.~\ref{fig:z1_schema}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_schema}
+	\caption{Схема параллельного умножителя}
+	\label{fig:z1_schema}
+\end{figure}
+
+Выполним компиляцию проекта (рис.~\ref{fig:z1_report}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/z1_report}
+	\caption{Компиляция параллельного умножителя}
+	\label{fig:z1_report}
+\end{figure}
+
+Построим RTL представление для полученного устройства (рис.~\ref{fig:z1_rtl}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_rtl}
+	\caption{Общее RTL представление параллельного умножителя}
+	\label{fig:z1_rtl}
+\end{figure}
+
+Рассмотрим подробнее память (рис.~\ref{fig:z1_rtl2}).
+Она состоит из 16 ячеек памяти.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_rtl2}
+	\caption{Подробное RTL представление памяти параллельного умножителя}
+	\label{fig:z1_rtl2}
+\end{figure}
+
+На рис.~\ref{fig:z1_rtl3} представлена реализация памяти на железе.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_rtl3}
+	\caption{Подробное TMV представление памяти параллельного умножителя}
+	\label{fig:z1_rtl3}
+\end{figure}
+
+На рис.~\ref{fig:z1_chip_in}~и~\ref{fig:z1_chip_out} изображены входы и выходы сигналов в память.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/z1_chip_in}
+	\caption{Входы в память}
+	\label{fig:z1_chip_in}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/z1_chip_out}
+	\caption{Выходы из памяти}
+	\label{fig:z1_chip_out}
+\end{figure}
+
+Произведем тестирование параллельного умножителя (рис.~\ref{fig:z1_wave}).
+На входы А и Б подаются одинаковые сигналы которые перемножаются как два числа типа integer.
+С задержкой 2 тактовых сигнала значения попадают на выход умножителя.
+На каждом такте ответ записывается в RAM по некоторому адресу.
+В этот же такт происходит считывание на адрес меньше, то есть предыдущего результата.
+Итоговая задержка -- 3 такта.
+Как можно заметить, на выходе получаем квадраты входных элементов.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z1_wave}
+	\caption{Тестирование параллельного умножителя}
+	\label{fig:z1_wave}
+\end{figure}
+
+\subsection{Создание собственного устройства}
+
+Было создано собственное устройство, реализующее функции конвейерного сложения величин.
+Память была уменьшена по ширине данных, так как размерность результата суммирования совпадает с размерностью входных данных.
+Так же было уменьшено адресное пространство памяти и отключена инициализация за ненадобностью.
+Итоговая схема на рис.~\ref{fig:z2_schema}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z2_schema}
+	\caption{Схема параллельного сумматора}
+	\label{fig:z2_schema}
+\end{figure}
+
+Выполним компиляцию проекта (рис.~\ref{fig:z2_report}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{image/z2_report}
+	\caption{Компиляция параллельного сумматора}
+	\label{fig:z2_report}
+\end{figure}
+
+Построим RTL представление для памяти полученного устройства (рис.~\ref{fig:z2_rtl}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z2_rtl}
+	\caption{RTL представление памяти параллельного сумматора}
+	\label{fig:z2_rtl}
+\end{figure}
+
+Построим Technology map view для памяти полученного устройства (рис.~\ref{fig:z2_rtl2}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z2_rtl2}
+	\caption{TMV представление памяти параллельного сумматора}
+	\label{fig:z2_rtl2}
+\end{figure}
+
+Произведем тестирование параллельного сумматора (рис.~\ref{fig:z2_wave}).
+На входы А и Б подаются одинаковые сигналы которые складываются как два числа типа integer.
+С задержкой 1 тактовый сигнал значения попадают на выход сумматора.
+На каждом такте ответ записывается в RAM по некоторому адресу.
+В этот же такт происходит считывание на адрес меньше, то есть предыдущего результата.
+Итоговая задержка -- 2 такта.
+Как можно заметить, на выходе получаем суммы входных элементов.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/z2_wave}
+	\caption{Тестирование параллельного сумматора}
+	\label{fig:z2_wave}
+\end{figure}
+
+\section{Выводы по работе}
+
+В ходе работы был получен блок параллельного умножителя и блок параллельного сложения.
+Оба устройства были протестированы с помощью Quartus waveform, что подтвердило правильность работоспособности устройства.
+Так же было выполнено построение RTL и TMV диаграмм для данных устройств.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа
