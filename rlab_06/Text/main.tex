@@ -1,0 +1,116 @@
+%!TEX TS-program = xelatex
+
+% Шаблон документа LaTeX создан в 2018 году
+% Алексеем Подчезерцевым
+% В качестве исходных использованы шаблоны
+% 	Данилом Фёдоровых (danil@fedorovykh.ru) 
+%		https://www.writelatex.com/coursera/latex/5.2.2
+%	LaTeX-шаблон для русской кандидатской диссертации и её автореферата.
+%		https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template
+
+\documentclass[a4paper,14pt]{article}
+
+\input{data/preambular.tex}
+\begin{document} % конец преамбулы, начало документа
+\input{data/title.tex}
+\tableofcontents
+\pagebreak
+
+\section{Задание}
+
+Разработать конвейерный умножитель.
+Изучить инструменты Quartus.
+
+\section{Выполнение работы}
+
+Создаем копию проекта работы №5, изменяем настройки device на MAX 10 - 10M50DCF484C7G.
+Создадим новую ревизию проекта, настроим Assignment Editor для умножителя (рис.~\ref{fig:setup}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/setup}
+	\caption{Настройка умножителя}
+	\label{fig:setup}
+\end{figure}
+
+Выполним компиляцию проекта.
+Отчет компиляции изображен на рис.~\ref{fig:compile}.
+На нем можно заметить общее число логических элементов, используемых пинов, потребление памяти.
+Поэлементные затраты отображены на рис.~\ref{fig:elements}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/compile}
+	\caption{Результат компиляции проекта}
+	\label{fig:compile}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/elements}
+	\caption{Затраты элементов}
+	\label{fig:elements}
+\end{figure}
+
+Построим сравнение с предыдущей ревизией (рис.~\ref{fig:diff}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/diff}
+	\caption{Сравнение ревизий}
+	\label{fig:diff}
+\end{figure}
+
+Откроем инструмент Pin Planner, назначим входы и выходы для заданной схемы (рис.~\ref{fig:chip_1}).
+Зафиксируем положение пинов (рис.~\ref{fig:chip_2}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/chip_1}
+	\caption{Результат размещения пинов}
+	\label{fig:chip_1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/chip_2}
+	\caption{Результат фиксации пинов}
+	\label{fig:chip_2}
+\end{figure}
+
+Вернемся к предыдущей ревизии, импортируем конфигурацию пинов из csv файла, сравним новое положение (красный цвет) с исходным (зеленый цвет) на рис.~\ref{fig:chip_3}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/chip_3}
+	\caption{Сравнение размещения пинов}
+	\label{fig:chip_3}
+\end{figure}
+
+Создадим новую ревизию, изменим целевую плату.
+Добавим дополнительный пин.
+Выполним компиляцию проекта, получим сообщение об ошибке, связанной с банкой (рис.~\ref{error}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/error}
+	\caption{Ошибка компиляции проекта}
+	\label{fig:error}
+\end{figure}
+
+\section{Выводы по работе}
+
+В ходе работы был получен блок параллельного умножителя.
+Получен опыт работы с различными ревизиями проекта, сравнения информации между версиями.
+Также была произведена установка пинов и исследованы особенности работы с банками платы.
+
+\newpage 
+\renewcommand{\refname}{{\normalsize Список использованных источников}} 
+\centering 
+\begin{thebibliography}{9} 
+	\addcontentsline{toc}{section}{\refname} 
+	\bibitem{Verilog} Thomas D., Moorby P. The Verilog Hardware Description Language. – Springer Science \& Business Media, 2008.
+	\bibitem{Quartus} Антонов А., Филиппов А., Золотухо Р. Средства системной отладки САПР Quartus II //Компоненты и технологии. – 2008. – №. 89.
+\end{thebibliography}
+
+\end{document} % конец документа
