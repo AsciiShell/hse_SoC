@@ -18,151 +18,144 @@
 
 \section{Задание}
 
-Создать конвейерный умножитель.
-Изменить схему устройства, добавив собственный блок памяти и арифметический блок.
+Создать сумматор-накопитель, входные данные A и B по 8 бит, поступают из RAM. 
+По разрешающему сигналу данные складываются и добавляются к предыдущему результату.
+Предусмотреть сброс данных в накопителе.
 
 \section{Выполнение работы}
 
-Создадим проект, в качестве device выберем 5CGXFC9C6F23C7 семейства Cyclone V.
-Данное изделие поддерживает инициализацию памяти, хотя, это не обязательно в данной работе.
-Создадим необходимые компоненты согласно инструкции, добавим эти модули на схему устройства (рис.~\ref{fig:z1_schema}).
+Создадим проект, в качестве device выберем 10M50DCF484C7G семейства MAX 10.
+
+Добавим в проект IP блок двупортовой памяти (рис.~\ref{fig:ram_1}) и настроим его (рис.~\ref{fig:ram_2}).
+Также добавим блок параллельного сумматора (рис.~\ref*{fig:add}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z1_schema}
-	\caption{Схема параллельного умножителя}
-	\label{fig:z1_schema}
+	\includegraphics[width=\linewidth]{image/ram_1}
+	\caption{Создание блока RAM}
+	\label{fig:ram_1}
 \end{figure}
 
-Выполним компиляцию проекта (рис.~\ref{fig:z1_report}).
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{image/z1_report}
-	\caption{Компиляция параллельного умножителя}
-	\label{fig:z1_report}
+	\includegraphics[width=\linewidth]{image/ram_2}
+	\caption{Настройка блока RAM}
+	\label{fig:ram_2}
 \end{figure}
 
-Построим RTL представление для полученного устройства (рис.~\ref{fig:z1_rtl}).
-
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z1_rtl}
-	\caption{Общее RTL представление параллельного умножителя}
-	\label{fig:z1_rtl}
+	\includegraphics[width=\linewidth]{image/add}
+	\caption{Создание блока сумматора}
+	\label{fig:add}
 \end{figure}
 
-Рассмотрим подробнее память (рис.~\ref{fig:z1_rtl2}).
-Она состоит из 16 ячеек памяти.
+Создадим схему проекта (рис~\ref{fig:schema}).
+Входные данные записываются в двупортовую память, оттуда поступают на вход сумматора, результат записывается в триггер и дублируется на вход сумматора.
+Предусмотрен сигнал сброса накопленного результата.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z1_rtl2}
-	\caption{Подробное RTL представление памяти параллельного умножителя}
-	\label{fig:z1_rtl2}
+	\includegraphics[width=\linewidth]{image/schema}
+	\caption{Схема проекта}
+	\label{fig:schema}
 \end{figure}
 
-На рис.~\ref{fig:z1_rtl3} представлена реализация памяти на железе.
+Выполним компиляцию проекта.
+В отчете компиляции (рис.~\ref{fig:report}) видно потребление логических и других элементов данным проектом.
+Отчет о потреблении элементов на блок представлен на рис.~\ref{fig:elements}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z1_rtl3}
-	\caption{Подробное TMV представление памяти параллельного умножителя}
-	\label{fig:z1_rtl3}
+	\includegraphics[width=0.6\linewidth]{image/report}
+	\caption{Результат компиляции}
+	\label{fig:report}
 \end{figure}
 
-На рис.~\ref{fig:z1_chip_in}~и~\ref{fig:z1_chip_out} изображены входы и выходы сигналов в память.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\linewidth]{image/elements}
+	\caption{Потребление элементов}
+	\label{fig:elements}
+\end{figure}
+
+Выполним тестирование схемы с помощью waveform.
+На вход сумматора подаются попеременно пары чисел 1, 1 и 1, 3(рис.~\ref{fig:wave}).
+Как можно заметить, результат суммирования увеличивается на 2 или 4 в зависимости от входных значений.
+При подаче сигнала сброса результат вычислений выставляется в 0.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{image/z1_chip_in}
+	\includegraphics[width=\linewidth]{image/wave}
+	\caption{Тестирование схемы}
+	\label{fig:wave}
+\end{figure}
+
+Построим RTL представление проекта (рис.~\ref{fig:rtl}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/rtl}
+	\caption{RTL представление проекта}
+	\label{fig:rtl}
+\end{figure}
+
+Из RTL представления проекта перейдем в TMV представление памяти (рис.~\ref{fig:tmv}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{image/tmv}
+	\caption{TMV представление памяти}
+	\label{fig:tmv}
+\end{figure}
+
+Далее перейдем в chip planner и рассмотрим подробно входы (рис.~\ref{fig:mem_in}) и выходы (рис.~\ref{fig:mem_out}) памяти.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{image/mem_in}
 	\caption{Входы в память}
-	\label{fig:z1_chip_in}
+	\label{fig:mem_in}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{image/z1_chip_out}
-	\caption{Выходы из памяти}
-	\label{fig:z1_chip_out}
+	\includegraphics[width=0.3\linewidth]{image/mem_out}
+	\caption{Выходы памяти}
+	\label{fig:mem_out}
 \end{figure}
 
-Произведем тестирование параллельного умножителя (рис.~\ref{fig:z1_wave}).
-На входы А и Б подаются одинаковые сигналы которые перемножаются как два числа типа integer.
-С задержкой 2 тактовых сигнала значения попадают на выход умножителя.
-На каждом такте ответ записывается в RAM по некоторому адресу.
-В этот же такт происходит считывание на адрес меньше, то есть предыдущего результата.
-Итоговая задержка -- 3 такта.
-Как можно заметить, на выходе получаем квадраты входных элементов.
+Расположим пины по банкам, используемые в проекте пины подсвечены зеленым (рис.~\ref{fig:pins}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z1_wave}
-	\caption{Тестирование параллельного умножителя}
-	\label{fig:z1_wave}
+	\includegraphics[width=0.8\linewidth]{image/pins}
+	\caption{Назначение пинов}
+	\label{fig:pins}
 \end{figure}
 
-\subsection{Создание собственного устройства}
-
-Было создано собственное устройство, реализующее функции конвейерного сложения величин.
-Память была уменьшена по ширине данных, так как размерность результата суммирования совпадает с размерностью входных данных.
-Так же было уменьшено адресное пространство памяти и отключена инициализация за ненадобностью.
-Итоговая схема на рис.~\ref{fig:z2_schema}.
+Создадим новую ревизию проекта, настроим ее на оптимизацию энергопотребления (рис.~\ref{fig:settings}).
+Выполним повторную сборку проекта, посмотрим на различия ревизий (рис.~\ref{fig:diff}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\linewidth]{image/z2_schema}
-	\caption{Схема параллельного сумматора}
-	\label{fig:z2_schema}
+	\includegraphics[width=0.8\linewidth]{image/settings}
+	\caption{Настройка новой ревизии}
+	\label{fig:settings}
 \end{figure}
-
-Выполним компиляцию проекта (рис.~\ref{fig:z2_report}).
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{image/z2_report}
-	\caption{Компиляция параллельного сумматора}
-	\label{fig:z2_report}
-\end{figure}
-
-Построим RTL представление для памяти полученного устройства (рис.~\ref{fig:z2_rtl}).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{image/z2_rtl}
-	\caption{RTL представление памяти параллельного сумматора}
-	\label{fig:z2_rtl}
-\end{figure}
-
-Построим Technology map view для памяти полученного устройства (рис.~\ref{fig:z2_rtl2}).
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{image/z2_rtl2}
-	\caption{TMV представление памяти параллельного сумматора}
-	\label{fig:z2_rtl2}
-\end{figure}
-
-Произведем тестирование параллельного сумматора (рис.~\ref{fig:z2_wave}).
-На входы А и Б подаются одинаковые сигналы которые складываются как два числа типа integer.
-С задержкой 1 тактовый сигнал значения попадают на выход сумматора.
-На каждом такте ответ записывается в RAM по некоторому адресу.
-В этот же такт происходит считывание на адрес меньше, то есть предыдущего результата.
-Итоговая задержка -- 2 такта.
-Как можно заметить, на выходе получаем суммы входных элементов.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{image/z2_wave}
-	\caption{Тестирование параллельного сумматора}
-	\label{fig:z2_wave}
+	\includegraphics[width=0.8\linewidth]{image/diff}
+	\caption{Сравнение ревизий}
+	\label{fig:diff}
 \end{figure}
 
 \section{Выводы по работе}
 
-В ходе работы был получен блок параллельного умножителя и блок параллельного сложения.
-Оба устройства были протестированы с помощью Quartus waveform, что подтвердило правильность работоспособности устройства.
-Так же было выполнено построение RTL и TMV диаграмм для данных устройств.
+В ходе работы был получен блок накопительного сложения чисел с возможностью сброса результата.
+Устройство были протестированы с помощью Quartus waveform, что подтвердило правильность работоспособности устройства.
+Так же было выполнено построение RTL и TMV диаграмм для устройства, построены зависимости в chip planer, настроены пины.
 
 \newpage 
 \renewcommand{\refname}{{\normalsize Список использованных источников}} 
