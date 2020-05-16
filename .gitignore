@@ -26,3 +26,10 @@
 **/simulation/qsim/
 
 **/simulation/sim/
+*.rpt
+
+*.jdi
+
+*.smsg
+
+*.summary
