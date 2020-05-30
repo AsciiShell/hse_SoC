@@ -47,7 +47,7 @@ module delay_x (
 	lpm_constant	LPM_CONSTANT_component (
 				.result (sub_wire0));
 	defparam
-		LPM_CONSTANT_component.lpm_cvalue = 3,
+		LPM_CONSTANT_component.lpm_cvalue = 10,
 		LPM_CONSTANT_component.lpm_hint = "ENABLE_RUNTIME_MOD=NO",
 		LPM_CONSTANT_component.lpm_type = "LPM_CONSTANT",
 		LPM_CONSTANT_component.lpm_width = 8;
@@ -63,11 +63,11 @@ endmodule
 // Retrieval info: PRIVATE: JTAG_ID STRING "NONE"
 // Retrieval info: PRIVATE: Radix NUMERIC "10"
 // Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
-// Retrieval info: PRIVATE: Value NUMERIC "3"
+// Retrieval info: PRIVATE: Value NUMERIC "10"
 // Retrieval info: PRIVATE: nBit NUMERIC "8"
 // Retrieval info: PRIVATE: new_diagram STRING "1"
 // Retrieval info: LIBRARY: lpm lpm.lpm_components.all
-// Retrieval info: CONSTANT: LPM_CVALUE NUMERIC "3"
+// Retrieval info: CONSTANT: LPM_CVALUE NUMERIC "10"
 // Retrieval info: CONSTANT: LPM_HINT STRING "ENABLE_RUNTIME_MOD=NO"
 // Retrieval info: CONSTANT: LPM_TYPE STRING "LPM_CONSTANT"
 // Retrieval info: CONSTANT: LPM_WIDTH NUMERIC "8"
