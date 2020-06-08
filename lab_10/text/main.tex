@@ -20,7 +20,7 @@
 	\begin{enumerate}
 		\item Реализуйте однотактный и многотактный модули в поведенческом стиле.
 		
-		\item Реализуйте данный модуль с параметром, равным з начению 5, проанализируйте его	характеристики и убедитесь, что они не изменились по сравнению с предыдущими	реализациями. Убедитесь в работоспособности получившихся реализаций, выполните имплементацию и сравните их	характеристики с характеристиками исходной реализации.
+		\item Реализуйте данный модуль с параметром, равным значению 5, проанализируйте его	характеристики и убедитесь, что они не изменились по сравнению с предыдущими	реализациями. Убедитесь в работоспособности получившихся реализаций, выполните имплементацию и сравните их	характеристики с характеристиками исходной реализации.
 	
 		\item Выполните имплементацию модуля со значением параметра n = 5, проанализируйте его	характеристики и убедитесь, что они не изменились. Убедитесь в работоспособности получившихся реализаций, выполните имплементацию и сравните их
 		характеристики с характеристиками исходной реализации.
@@ -33,21 +33,27 @@
 	
 	Реализуйте однотактный и многотактный модули в поведенческом стиле.
 	
-	На рис. \ref{fig:z103} представлен результат компиляции однотактного модуля в поведенческом стиле, на рис. \ref{fig:z106} многотактного модуля.
+	На рис. \ref{fig:z103} представлен результат компиляции однотактного модуля в поведенческом стиле.
+	 
+	{\small \VerbatimInput{../03_syn_pow_5_single_cycle_always/pow_5_single_cycle_always.v}}
 	
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z1_03}
-			\caption{Результат компиляции однотактного модуля}
-			\label{fig:z103}
-		\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z1_03}
+		\caption{Результат компиляции однотактного модуля}
+		\label{fig:z103}
+	\end{figure}
 			
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\linewidth]{images/z1_06}
-			\caption{Результат компиляции многотактного модуля}
-			\label{fig:z106}
-		\end{figure}
+	На рис. \ref{fig:z106} представлен результат компиляции однотактного модуля в поведенческом стиле.
+	
+	{\small \VerbatimInput{../06_syn_pow_5_multi_cycle_always/pow_5_multi_cycle_always.v}}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/z1_06}
+		\caption{Результат компиляции многотактного модуля}
+		\label{fig:z106}
+	\end{figure}
 		
 	
 	\subsection{Задание 2}
@@ -57,21 +63,21 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z2_4}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 4}
 		\label{fig:z24}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z2_5}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 5}
 		\label{fig:z25}
 	\end{figure}
 	
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z2_10}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 10}
 		\label{fig:z210}
 	\end{figure}
 	
@@ -84,33 +90,61 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z3_4}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 4}
 		\label{fig:z34}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z3_5}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 5}
 		\label{fig:z35}
 	\end{figure}
 
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/z3_10}
-		\caption{}
+		\caption{Результат компиляции с параметром равным 10}
 		\label{fig:z310}
 	\end{figure}
 	
 
 	\section{Задания для самостоятельной работы}
 	
-	Квадратный корень
+	Создать алгоритм вычисления квадратного корня.
 	
+	Исходный код генератора кода:
+	{\small \VerbatimInput{../generator.py}}
 	
+	Исходный код проекта:
+	{\small \VerbatimInput{../z1_0_single_cycle_struct/pow_5_single_cycle_struct.v}}
 	
+	На рис.~\ref{fig:dop_wave} представлены результаты тестирования.
+	На рис.~\ref{fig:dop_report} представлены результаты компиляции.
+	RTL представление доступно на рис.~\ref{fig:dop_rtl}.
+	Максимальная рабочая частота 266.24 MHz.
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/dop_wave}
+		\caption{Тестирование схемы}
+		\label{fig:dop_wave}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/dop_report}
+		\caption{Результат компиляции}
+		\label{fig:dop_report}
+	\end{figure}
 	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/dop_rtl}
+		\caption{RTL представление}
+		\label{fig:dop_rtl}
+	\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
