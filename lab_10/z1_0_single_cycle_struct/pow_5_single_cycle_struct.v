@@ -12,14 +12,14 @@ module pow_5_single_cycle_struct
     wire   [w - 1:0] arg_x;
     reg_no_rst # (w) i_arg     (clk, arg, arg_x);
 
-	 reg   [w - 1:0] y;
-	 reg   [w - 1:0] b;
-	 reg   [w - 1:0] x;
-	 always @ (posedge clk)
-	 begin
-	     x = arg_x;
-	     y = 8'b00000000;
-		  
+    reg   [w - 1:0] y;
+    reg   [w - 1:0] b;
+    reg   [w - 1:0] x;
+    always @ (posedge clk)
+    begin
+        x = arg_x;
+        y = 8'b00000000;
+          
         b = y | 8'b00000000;
         y = y >> 1;
         if (x >= b)
@@ -76,7 +76,7 @@ module pow_5_single_cycle_struct
             x = x - b;
             y = y | 8'b00000001;
         end
-	 end
+     end
 
     reg_no_rst # (w) i_res     (clk, y, res);
 
