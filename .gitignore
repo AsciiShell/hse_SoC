@@ -26,3 +26,12 @@
 **/simulation/qsim/
 
 **/simulation/sim/
+*.rpt
+
+*.jdi
+
+*.smsg
+
+*.summary
+
+**/.ipynb_checkpoints/
